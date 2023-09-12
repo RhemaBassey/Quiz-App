@@ -14,26 +14,46 @@
 
     <link rel="stylesheet" href="styles.css" />
 
-    <title>Quiz App</title>
+    <title>Quiz App: Subject Quiz</title>
   </head>
   <body>
-    <h1>Quiz App</h1>
-    <p>Hello there, and welcome to the quiz app</p>
+    <h1 class="heading">Subject Quiz</h1>
+    <p class="heading">Please select the correct answer</p>
     <br />
 
     <div class="card">
-      <h3>Question goes here</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua?        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      <h3>Question <span id="displayedQuestionCount">n</span> of <span id="displayedQuestionCountMax">M</span></h3>
+      <ol>
+        <li>
+          <p id="displayedQuestion" class="que2">
+            Lor em ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua? Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </li>
+      </ol>
+
+      <!-- <p class="que">
+       <strong> n )</strong> Lor em ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua? Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
-      </p>
+      </p> -->
+
       <ul>
         <button class="options-btn hoverable1"><li>Option 1</li></button>
         <button class="options-btn hoverable1"><li>Option 2</li></button>
         <button class="options-btn hoverable1"><li>Option 3</li></button>
         <button class="options-btn hoverable1"><li>Option 4</li></button>
       </ul>
+<!-- 
+      <button class="three-d-btn shadow3"> < </button>
+      <button class="three-d-btn shadow3"> > </button> -->
+    
+      <button id="previousBtn" class="three-d-btn animated1"> < </button>
+      <button id="nextBtn" class="three-d-btn animated1"> > </button>
     </div>
+    <script src="index.js"></script>
   </body>
 </html>
