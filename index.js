@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       question: "Q2",
-      options: ["Q2 OP1", "Q2 OP2", "Q2 OP3", "Q2 OP4"],
+      options: ["Q2 OP1", "Q2 OP2"],
     },
     {
       question: "Q3",
@@ -17,18 +17,22 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       question: "Q4",
-      options: ["Q4 OP1", "Q4 OP2", "Q4 OP3", "Q4 OP4"],
+      options: ["Q4 OP1", "Q4 OP2", "Q4 OP3"],
     },
     {
       question: "Q5",
-      options: ["Q5 OP1", "Q5 OP2", "Q5 OP3", "Q5 OP4"],
+      options: ["Q5 OP1", "Q5 OP2", "Q5 OP3", "Q5 OP4", "Q5 OP5"],
     },
   ];
 
-  // var questions = []
-  // for(var i=0; i<50; i++){
-  //  questions.push("blah ".repeat((i+1)*2))
-  // }
+  var randomizeQuestions = true;
+
+  if (randomizeQuestions == true) {
+    for (var i in questions) {
+      questions[i].options.sort(() => Math.random() - 0.5); //this will randomize the questions
+    }
+  }
+
   var questionCount = 1;
   var questionCountMax = questions.length;
 
@@ -40,32 +44,78 @@ document.addEventListener("DOMContentLoaded", function () {
   var displayedQuestionCountMax = document.getElementById(
     "displayedQuestionCountMax"
   );
+  var displayedOptions = document.getElementById("displayedOptions");
 
   displayedQuestionCount.innerText = questionCount;
   displayedQuestionCountMax.innerText = questionCountMax;
   displayedQuestion.innerText = questions[questionCount - 1].question;
 
+  function addOptions(questions) {
+    displayedOptions.innerHTML = "";
+    for (option of questions[questionCount - 1].options) {
+      var optionBtn = document.createElement("button");
+      optionBtn.className = "options-btn hoverable1";
+      optionBtn.innerHTML = "<li>" + option + "</li>";
+      displayedOptions.appendChild(optionBtn);
+    }
+  }
+  addOptions(questions);
+
+  var displayedOptionsBtn = document.getElementsByClassName(
+    "options-btn hoverable1"
+  );
+  previousBtn.classList.add("disabled");
+
+  for (var btn in displayedOptionsBtn) {
+    console.log(btn);
+  }
   previousBtn.addEventListener("click", function () {
     if (questionCount > 1) {
       questionCount--;
+
+      if (questionCount == 1) {
+        previousBtn.classList.add("disabled");
+      }
+      nextBtn.innerHTML = "<i class='fa-solid fa-arrow-right'></i>";
+      displayedQuestionCount.innerText = questionCount;
       displayedQuestion.innerText = questions[questionCount - 1].question;
       num.start = questionCount;
 
-      for (option of questions[questionCount - 1].options) {
-        var question = document.createElement();
-      }
+      addOptions(questions);
+    } else {
+      previousBtn.classList.add("disabled");
     }
   });
 
   nextBtn.addEventListener("click", function () {
     if (questionCount < questionCountMax) {
       questionCount++;
-      displayedQuestion.innerText = questions[questionCount - 1].question;
-      num.start = questionCount;
-
-      for (let option of questions[questionCount - 1].options) {
-        console.log(option);
+      if (questionCount == questionCountMax) {
+        nextBtn.innerHTML = "SUBMIT";
       }
+      previousBtn.classList.remove("disabled");
+      displayedQuestionCount.innerText = questionCount;
+      num.start = questionCount;
+      displayedQuestion.innerText = questions[questionCount - 1].question;
+      addOptions(questions);
     }
   });
+
+  for (var n in displayedOptionsBtn) {
+    displayedOptionsBtn[n].addEventListener("click", function () {
+      
+      if (questionCount < questionCountMax) {
+        questionCount++;
+        if (questionCount == questionCountMax) {
+          nextBtn.innerHTML = "SUBMIT";
+        }
+        previousBtn.classList.remove("disabled");
+        displayedQuestionCount.innerText = questionCount;
+        num.start = questionCount;
+        displayedQuestion.innerText = questions[questionCount - 1].question;
+        addOptions(questions);
+      }
+      
+    });
+  }
 });

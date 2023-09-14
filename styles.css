@@ -55,7 +55,7 @@ strong{
   text-decoration: none;
   display: inline-block;
   font-size: 18px;
-  width: 100px;
+  width: 120px;
   cursor: pointer;
 }
 
@@ -93,6 +93,7 @@ strong{
 }
 
 
+
 .card {
 
   margin: 0 auto 30px;   /* makes the card centered, with 30px margin bottom*/
@@ -109,7 +110,10 @@ strong{
   
 }
 
-
+.disabled{
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 
 .options-btn{
