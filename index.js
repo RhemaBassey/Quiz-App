@@ -52,24 +52,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function addOptions(questions) {
     displayedOptions.innerHTML = "";
+    var n = 0
     for (option of questions[questionCount - 1].options) {
+
       var optionBtn = document.createElement("button");
       optionBtn.className = "options-btn hoverable1";
       optionBtn.innerHTML = "<li>" + option + "</li>";
+      optionBtn.addEventListener("click", function () {
+        nextPage();
+      });
       displayedOptions.appendChild(optionBtn);
+      n += 1;
     }
-  }
-  addOptions(questions);
 
-  var displayedOptionsBtn = document.getElementsByClassName(
-    "options-btn hoverable1"
-  );
-  previousBtn.classList.add("disabled");
-
-  for (var btn in displayedOptionsBtn) {
-    console.log(btn);
+    var displayedOptionsBtn = document.getElementsByClassName(
+      "options-btn hoverable1"
+    );
+    
+    for (var i = 0; i < displayedOptionsBtn.length; i++) {
+      displayedOptionsBtn[i].addEventListener("click", function () {
+        console.log(displayedOptionsBtn[i])
+      });
+    }
+    
   }
-  previousBtn.addEventListener("click", function () {
+ 
+  function previousPage(delay){
     if (questionCount > 1) {
       questionCount--;
 
@@ -85,9 +93,9 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       previousBtn.classList.add("disabled");
     }
-  });
+  }
 
-  nextBtn.addEventListener("click", function () {
+  function nextPage(delay) {
     if (questionCount < questionCountMax) {
       questionCount++;
       if (questionCount == questionCountMax) {
@@ -99,23 +107,18 @@ document.addEventListener("DOMContentLoaded", function () {
       displayedQuestion.innerText = questions[questionCount - 1].question;
       addOptions(questions);
     }
+  }
+
+  addOptions(questions);
+
+  previousBtn.classList.add("disabled");
+
+
+  previousBtn.addEventListener("click", function () {
+    previousPage()
   });
 
-  for (var n in displayedOptionsBtn) {
-    displayedOptionsBtn[n].addEventListener("click", function () {
-      
-      if (questionCount < questionCountMax) {
-        questionCount++;
-        if (questionCount == questionCountMax) {
-          nextBtn.innerHTML = "SUBMIT";
-        }
-        previousBtn.classList.remove("disabled");
-        displayedQuestionCount.innerText = questionCount;
-        num.start = questionCount;
-        displayedQuestion.innerText = questions[questionCount - 1].question;
-        addOptions(questions);
-      }
-      
-    });
-  }
+  nextBtn.addEventListener("click", function () {
+    nextPage()
+  });
 });
