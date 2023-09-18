@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
+  var selectedOptions = [];
+
   var randomizeQuestions = true;
 
   if (randomizeQuestions == true) {
@@ -52,32 +54,83 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function addOptions(questions) {
     displayedOptions.innerHTML = "";
-    var n = 0
+    var n = 0;
     for (option of questions[questionCount - 1].options) {
-
       var optionBtn = document.createElement("button");
+
+
+      optionBtn.id = n;
       optionBtn.className = "options-btn hoverable1";
+
       optionBtn.innerHTML = "<li>" + option + "</li>";
+
+
+
+      // if (selectedOptions.some(n === selectedOptionsDetails.question_num && optionBtn.id === selectedOptionsDetails.option_index)) {
+      //   this.classList.add("selected-btn");
+      // }
+
+
+
+
       optionBtn.addEventListener("click", function () {
+        
+        var selectedOptionsDetails = {
+          question_num: questionCount,
+          option_index: this.id,
+        };
+        console.log(
+          "question_num -> " + questionCount + ", option_index -> " + this.id
+        );
+        // if (selectedOptions.some(option => option.question_num === selectedOptionsDetails.question_num && option.option_index === selectedOptionsDetails.option_index)) {
+        //   this.classList.add("selected-btn");
+        // }
+
+        selectedOptions.push(selectedOptionsDetails);
+
+
+
         nextPage();
       });
+
       displayedOptions.appendChild(optionBtn);
+
+      (function(index){
+        id = index
+        var optionDetails = {
+          question_num: questionCount,
+          option_index: id,
+        };
+
+
+        if (selectedOptions.some(option => option.question_num == optionDetails.question_num && option.option_index == optionDetails.option_index)) {
+          var highlightBtn = document.getElementById(index)
+          highlightBtn.classList.add("selected-btn");
+        }
+
+      })(n)
+
       n += 1;
     }
 
-    var displayedOptionsBtn = document.getElementsByClassName(
-      "options-btn hoverable1"
-    );
     
-    for (var i = 0; i < displayedOptionsBtn.length; i++) {
-      displayedOptionsBtn[i].addEventListener("click", function () {
-        console.log(displayedOptionsBtn[i])
-      });
+    for(var i=0; i< questions[questionCount - 1].options.length; i++){
+
     }
-    
+
+    // for(var i; i< questions[questionCount - 1].options.length; i++){
+      
+    //   (function(index){
+    //     var selectedOptionsDetails = {
+    //       question_num: questionCount,
+    //       option_index: index,
+    //     };
+    //     console.log(index)
+    //   })
+    // }
   }
- 
-  function previousPage(delay){
+
+  function previousPage(delay) {
     if (questionCount > 1) {
       questionCount--;
 
@@ -113,12 +166,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   previousBtn.classList.add("disabled");
 
-
   previousBtn.addEventListener("click", function () {
-    previousPage()
+    previousPage();
   });
 
   nextBtn.addEventListener("click", function () {
-    nextPage()
+    nextPage();
   });
 });

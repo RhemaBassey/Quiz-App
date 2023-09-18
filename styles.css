@@ -147,6 +147,11 @@ strong{
   color: white;
 }
 
+.selected-btn{
+  background-color: #008cba;
+  color: white;
+}
+
 h3 {
   color: #333;
   font-size: 24px;
