@@ -26,6 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   var selectedOptions = [];
+  for (var i in questions){
+    selectedOptions.push('')
+  }
+  console.log(selectedOptions)
 
   var randomizeQuestions = true;
 
@@ -57,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var n = 0;
     for (option of questions[questionCount - 1].options) {
       var optionBtn = document.createElement("button");
+      var optionBtns = document.getElementsByClassName("options-btn")
 
 
       optionBtn.id = n;
@@ -74,20 +79,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
       optionBtn.addEventListener("click", function () {
+
+
+        
         
         var selectedOptionsDetails = {
           question_num: questionCount,
           option_index: this.id,
         };
-        console.log(
-          "question_num -> " + questionCount + ", option_index -> " + this.id
-        );
+
+
+        //removes other highlights
+        for(var optionBtn of optionBtns){
+          optionBtn.classList.remove("selected-btn")
+        }
+
+        //highlight selected btn
+        this.classList.add("selected-btn")
+
+
+        
         // if (selectedOptions.some(option => option.question_num === selectedOptionsDetails.question_num && option.option_index === selectedOptionsDetails.option_index)) {
         //   this.classList.add("selected-btn");
         // }
 
-        selectedOptions.push(selectedOptionsDetails);
+        selectedOptions[selectedOptionsDetails.question_num-1] = selectedOptionsDetails;
+        console.log(selectedOptions)
 
+     
 
 
         nextPage();
