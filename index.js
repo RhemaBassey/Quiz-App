@@ -26,10 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   var selectedOptions = [];
-  for (var i in questions){
-    selectedOptions.push('')
+  for (var i in questions) {
+    selectedOptions.push("");
   }
-  console.log(selectedOptions)
 
   var randomizeQuestions = true;
 
@@ -61,52 +60,45 @@ document.addEventListener("DOMContentLoaded", function () {
     var n = 0;
     for (option of questions[questionCount - 1].options) {
       var optionBtn = document.createElement("button");
-      var optionBtns = document.getElementsByClassName("options-btn")
-
+      var optionBtns = document.getElementsByClassName("options-btn");
 
       optionBtn.id = n;
       optionBtn.className = "options-btn hoverable1";
 
       optionBtn.innerHTML = "<li>" + option + "</li>";
 
-
-
       // if (selectedOptions.some(n === selectedOptionsDetails.question_num && optionBtn.id === selectedOptionsDetails.option_index)) {
       //   this.classList.add("selected-btn");
       // }
 
-
-
-
       optionBtn.addEventListener("click", function () {
-
-
-        
-        
         var selectedOptionsDetails = {
           question_num: questionCount,
           option_index: this.id,
         };
 
-
         //removes other highlights
-        for(var optionBtn of optionBtns){
-          optionBtn.classList.remove("selected-btn")
+        for (var optionBtn of optionBtns) {
+          optionBtn.classList.remove("selected-btn");
         }
 
         //highlight selected btn
-        this.classList.add("selected-btn")
+        this.classList.add("selected-btn");
 
-
-        
         // if (selectedOptions.some(option => option.question_num === selectedOptionsDetails.question_num && option.option_index === selectedOptionsDetails.option_index)) {
         //   this.classList.add("selected-btn");
         // }
 
-        selectedOptions[selectedOptionsDetails.question_num-1] = selectedOptionsDetails;
-        console.log(selectedOptions)
+        selectedOptions[selectedOptionsDetails.question_num - 1] =
+          selectedOptionsDetails;
+        console.log(selectedOptions.length);
 
-     
+        // turn submit button green
+       
+        if (selectedOptions.includes('') == false && questionCount>=questionCountMax -1){
+          nextBtn.classList.add("submit-green-btn")
+          console.log("green")
+        }
 
 
         nextPage();
@@ -114,31 +106,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
       displayedOptions.appendChild(optionBtn);
 
-      (function(index){
-        id = index
+      (function (index) {
+        id = index;
         var optionDetails = {
           question_num: questionCount,
           option_index: id,
         };
 
-
-        if (selectedOptions.some(option => option.question_num == optionDetails.question_num && option.option_index == optionDetails.option_index)) {
-          var highlightBtn = document.getElementById(index)
+        if (
+          selectedOptions.some(
+            (option) =>
+              option.question_num == optionDetails.question_num &&
+              option.option_index == optionDetails.option_index
+          )
+        ) {
+          var highlightBtn = document.getElementById(index);
           highlightBtn.classList.add("selected-btn");
         }
-
-      })(n)
+      })(n);
 
       n += 1;
     }
 
-    
-    for(var i=0; i< questions[questionCount - 1].options.length; i++){
-
-    }
+    for (var i = 0; i < questions[questionCount - 1].options.length; i++) {}
 
     // for(var i; i< questions[questionCount - 1].options.length; i++){
-      
+
     //   (function(index){
     //     var selectedOptionsDetails = {
     //       question_num: questionCount,
@@ -152,6 +145,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function previousPage(delay) {
     if (questionCount > 1) {
       questionCount--;
+
+      nextBtn.classList.remove("submit-green-btn")
 
       if (questionCount == 1) {
         previousBtn.classList.add("disabled");
@@ -170,9 +165,18 @@ document.addEventListener("DOMContentLoaded", function () {
   function nextPage(delay) {
     if (questionCount < questionCountMax) {
       questionCount++;
+
+
       if (questionCount == questionCountMax) {
+        // turn submit button green
+
+        if (selectedOptions.includes('') == false){
+          nextBtn.classList.add("submit-green-btn")
+          console.log("green")
+        }
         nextBtn.innerHTML = "SUBMIT";
       }
+      
       previousBtn.classList.remove("disabled");
       displayedQuestionCount.innerText = questionCount;
       num.start = questionCount;
