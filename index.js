@@ -62,9 +62,20 @@ document.addEventListener("DOMContentLoaded", function () {
   displayedQuestionCountMax.innerText = questionCountMax;
   displayedQuestion.innerText = questions[questionCount - 1].question;
 
+  function fadingEffect(target,delay){
+    if(questionCount < questionCountMax){
+          target.classList.add("fade-in")
+    setTimeout(function () {
+      target.classList.remove("fade-in");
+    }, delay);
+    }
+
+  }
   function addOptions(questions) {
+
     displayedOptions.innerHTML = "";
     var n = 0;
+    var fadeDelay = 500
     for (option of questions[questionCount - 1].options) {
       var optionBtn = document.createElement("button");
       var optionBtns = document.getElementsByClassName("options-btn");
@@ -79,6 +90,9 @@ document.addEventListener("DOMContentLoaded", function () {
       // }
 
       optionBtn.addEventListener("click", function () {
+        fadingEffect(displayedOptions,fadeDelay)
+        fadingEffect(num, fadeDelay)
+        fadingEffect(displayedQuestion,fadeDelay)
         var selectedOptionsDetails = {
           question_num: questionCount,
           option_index: this.id,
@@ -100,16 +114,21 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedOptions[selectedOptionsDetails.question_num - 1] =
           selectedOptionsDetails;
 
-        // turn submit button green
+        var submitDelay = ''
+          
 
-        // if (
-        //   selectedOptions.includes("") == false &&
-        //   questionCount >= questionCountMax - 1
-        // ) {
-        //   nextBtn.classList.add("submit-green-btn");
-        // }
-        submitBtn(questionCountMax -1, false)
-        nextPage();
+          if(questionCount == questionCountMax){
+            submitDelay = 0
+          }
+          else{
+            submitDelay = fadeDelay
+          }
+
+          setTimeout(function(){
+            submitBtn(questionCountMax -1, false)
+          },submitDelay)
+
+        nextPage(fadeDelay);
 
       });
 
@@ -172,6 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function nextPage(delay) {
+    setTimeout(function(){
     if (questionCount < questionCountMax) {
       questionCount++;
 
@@ -181,6 +201,8 @@ document.addEventListener("DOMContentLoaded", function () {
       displayedQuestion.innerText = questions[questionCount - 1].question;
       addOptions(questions);
     }
+    }, delay)
+
   }
 
   addOptions(questions);
@@ -218,7 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
           correct_answers +=1 
         }
        }
-        alert("You got: "+correct_answers+"/"+questionCountMax)
+        alert("Score: "+correct_answers+"/"+questionCountMax)
       }
       // text change to submit
 
@@ -232,3 +254,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+var name='rb'
+export {name}

@@ -115,6 +115,10 @@ strong{
   cursor: not-allowed;
 }
 
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.4s;
+}
 
 .options-btn{
   opacity: 1;
