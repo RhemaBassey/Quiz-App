@@ -1,4 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
+var exportData = ['']
+
+
+function myFunction() {
   var previousBtn = document.getElementById("previousBtn");
   var nextBtn = document.getElementById("nextBtn");
 
@@ -76,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
     displayedOptions.innerHTML = "";
     var n = 0;
     var fadeDelay = 500
-    for (option of questions[questionCount - 1].options) {
+    for (var option of questions[questionCount - 1].options) {
       var optionBtn = document.createElement("button");
       var optionBtns = document.getElementsByClassName("options-btn");
 
@@ -135,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
       displayedOptions.appendChild(optionBtn);
 
       (function (index) {
-        id = index;
+        var id = index;
         var optionDetails = {
           question_num: questionCount,
           option_index: id,
@@ -253,7 +256,25 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
-});
+  exportData.push(questionCountMax);
+};
 
-var name='rb'
-export {name}
+
+
+var body = document.getElementsByTagName("body")[0]
+
+if(body.id == "quiz-room"){
+  document.addEventListener("DOMContentLoaded", myFunction())
+}
+
+console.log(exportData)
+
+function yfunc(){
+  exportData.push('yaaaaaaaaaaaaaassssssssssssss')
+}
+
+function xfunc(){
+  yfunc()
+  console.log(exportData)
+}
+export {exportData, myFunction,xfunc}

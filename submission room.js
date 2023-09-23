@@ -1,3 +1,4 @@
-import { name } from "./index.js";
+import { exportData, myFunction,xfunc} from "./index.js";
 
-console.log(name)
+// myFunction()
+console.log(exportData)
