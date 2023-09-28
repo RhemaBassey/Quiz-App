@@ -1,4 +1,13 @@
-import { exportData, myFunction,xfunc} from "./index.js";
+var exportData = JSON.parse(localStorage.getItem('exportData'));
 
-// myFunction()
+var correctAnswers = exportData[0].correctAnswers
+var questionCountMax = exportData[0].questionCountMax
+
+var displayedScore = document.getElementById("displayedScore")
+var displayedQuestionCountMax = document.getElementById("displayedQuestionCountMax")
+
+
+displayedScore.innerText = correctAnswers
+displayedQuestionCountMax.innerText = questionCountMax
+
 console.log(exportData)
