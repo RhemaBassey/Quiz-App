@@ -110,6 +110,11 @@ strong{
   
 }
 
+.card-text{
+  /* margin: 0 auto; */
+  text-align: center;
+}
+
 .disabled{
   opacity: 0.6;
   cursor: not-allowed;
@@ -151,9 +156,20 @@ strong{
   color: white;
 }
 
+.score-container{
+  margin: 30px auto;
+
+}
+
 .selected-btn{
   background-color: #008cba;
   color: white;
+}
+
+.stars{
+  size: 5px;
+  /* padding: 20px;
+  margin: 20px; */
 }
 
 
@@ -176,14 +192,22 @@ strong{
   transform: translateY(4px);
 }
 
-h3 {
+
+
+#quiz-room h3 {
   color: #333;
   font-size: 24px;
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 10%;
   text-align: left;
-  
+}
+
+#submission-room h3{
+  color: #333;
+  font-size: 24px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 /* stylize the listing of quiz options (e.g 'A: Option A', instead of, 'A. Option A' */
