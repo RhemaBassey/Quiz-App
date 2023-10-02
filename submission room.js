@@ -10,31 +10,36 @@ var displayedQuestionCountMax = document.getElementById(
 
 var comment = document.getElementById("comment");
 
-function starRating(num) {
+function starRating() {
+  var num = (correctAnswers / questionCountMax) * 5
   var icon = "";
-  for (var i = 0; i < num; i++) {
-    icon += "<i class='fa-solid fa-star' style='color: yellow;'></i> ";
-  }
-  return icon+'<br><br>';
+  for (var i = 0; i < 5; i++) {
+    if (i<num){  
+        icon += "<i class='fa-solid fa-star' style='color: yellow;'></i> "}
+    else{
+      icon += "<i class='fa-solid fa-star' style='color: grey;'></i> ";
+    }
+  
+  }return icon+'<br><br>';
 }
+  
 
+// correctAnswers = 0
+// questionCountMax = 100
+
+comment.innerHTML = starRating()
 if (correctAnswers == questionCountMax) {
-  comment.innerHTML =
-    starRating((correctAnswers / questionCountMax) * 5) + "'Perfect 💯/💯'";
+  comment.innerHTML += "'Perfect 💯/💯'<br><br>";
 } else if (correctAnswers >= questionCountMax * 0.8) {
-  comment.innerHTML =
-    starRating((correctAnswers / questionCountMax) * 5) + "'Excellent 🔥'";
+  comment.innerHTML +="'Excellent 🔥' <br><br>";
 } else if (correctAnswers >= questionCountMax * 0.5) {
-  comment.innerHTML =
-    starRating((correctAnswers / questionCountMax) * 5) + "'Good 👍'";
+  comment.innerHTML += "'Good 👍' <br><br>";
 } else if (correctAnswers >= questionCountMax * 0.333) {
-  comment.innerHTML =
-    starRating((correctAnswers / questionCountMax) * 5) + "<br><br>'Fair 🤔'";
+  comment.innerHTML += "'Fair 🤔' <br><br>";
 } else if (correctAnswers > 0) {
-  comment.innerHTML =
-    starRating((correctAnswers / questionCountMax) * 5) + "'Subpar 👎'";
+  comment.innerHTML += "'Subpar 👎' <br><br>";
 } else {
-  comment.innerHTML = "'Null (❌_❌)'";
+  comment.innerHTML += "'Null (❌_❌)'";
 }
 
 displayedScore.innerText = correctAnswers;

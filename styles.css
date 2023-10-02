@@ -157,7 +157,7 @@ strong{
 }
 
 .score-container{
-  margin: 30px auto;
+  margin: 20px auto 10px auto;
 
 }
 
@@ -192,6 +192,13 @@ strong{
   transform: translateY(4px);
 }
 
+#displayedQuestionCountMax{
+  vertical-align: -4px;
+}
+
+#displayedScore{
+  vertical-align: 8px;
+}
 
 
 #quiz-room h3 {
@@ -201,6 +208,10 @@ strong{
   padding-bottom: 20px;
   padding-left: 10%;
   text-align: left;
+}
+
+#submission-room .card{
+  width: 300px;
 }
 
 #submission-room h3{
