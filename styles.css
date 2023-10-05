@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+a{
+  display: inline-block;
+}
+
 body {
   font-family: "Inter", sans-serif;
   font-family: "Raleway", sans-serif;
@@ -211,7 +215,7 @@ strong{
 }
 
 #submission-room .card{
-  width: 300px;
+  width: 800px;
 }
 
 #submission-room h3{
