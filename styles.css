@@ -5,8 +5,8 @@
   box-sizing: border-box;
 }
 
-a{
-  display: inline-block;
+a {
+  text-decoration: none;
 }
 
 body {
@@ -14,39 +14,37 @@ body {
   font-family: "Raleway", sans-serif;
   text-align: center;
   margin-top: 20px;
-  background-color:#005e7e;
+  background-color: #005e7e;
   /* background-color: #f0f0f0; */
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
-h1.heading{
+h1.heading {
   color: #ffffff;
 }
 
-p.heading{
+p.heading {
   color: #ffffff;
   padding-bottom: 12px;
   padding-top: 12px;
 }
-p.que{
+p.que {
   text-align: left;
   padding: 0px 10% 30px;
 }
 
-p.que2{
+p.que2 {
   text-align: left;
   padding: 0px 2.5% 30px;
   color: rgba(0, 0, 0, 0.85);
 }
 
-strong{
+strong {
   font-size: 1.2rem;
   padding-right: 20px;
 }
-
-
 
 .three-d-btn {
   opacity: 1;
@@ -78,8 +76,6 @@ strong{
     0 17px 50px 0 rgba(255, 52, 1, 0.5); */
 }
 
-
-
 .animated1 {
   box-shadow: 0 9px #005e7e;
   /* padding: 20px 60px; */
@@ -96,30 +92,49 @@ strong{
   transform: translateY(4px);
 }
 
-
-
 .card {
-
-  margin: 0 auto 30px;   /* makes the card centered, with 30px margin bottom*/
+  margin: 0 auto 30px; /* makes the card centered, with 30px margin bottom*/
   padding: 20px 20px 50px; /* 20px Top, 20px Left & Right , 50px Bottom */
   background-color: #ffffff;
-  
+
   border-radius: 10px;
   border: 1px solid #ccc;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-  
+
   text-align: center;
   justify-content: center;
   max-width: 750px;
-  
+  height: 520px; /* Set a fixed height for the card */
+
+  overflow: hidden; /* Hide content that overflows the card */
 }
 
-.card-text{
+.scrollable-content {
+  height: 85%;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.scrollable-content::-webkit-scrollbar{
+  width: 8px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+  background-color:#ccc;
+  border-radius: 8px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+  background-color: ghostwhite;
+  border-radius: 8px;
+}
+
+
+.card-text {
   /* margin: 0 auto; */
   text-align: center;
 }
 
-.disabled{
+.disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
@@ -129,7 +144,7 @@ strong{
   transition: opacity 0.4s;
 }
 
-.options-btn{
+.options-btn {
   opacity: 1;
 
   background-color: white;
@@ -160,33 +175,31 @@ strong{
   color: white;
 }
 
-.score-container{
+.score-container {
   margin: 20px auto 10px auto;
-
 }
 
-.selected-btn{
+.selected-btn {
   background-color: #008cba;
   color: white;
 }
 
-.stars{
+.stars {
   size: 5px;
   /* padding: 20px;
   margin: 20px; */
 }
 
-
 .submit-green-btn {
   background-color: limegreen;
   color: white;
-  box-shadow: 0 9px  #3f704d ;
+  box-shadow: 0 9px #3f704d;
   /* padding: 20px 60px; */
   border-radius: 15px;
 }
 
 .submit-green-btn:hover {
-  background-color: lime ;
+  background-color: lime;
   box-shadow: 0 9px limegreen;
 }
 
@@ -196,14 +209,19 @@ strong{
   transform: translateY(4px);
 }
 
-#displayedQuestionCountMax{
+#displayedQuestionCountMax {
   vertical-align: -4px;
 }
 
-#displayedScore{
+#displayedScore {
   vertical-align: 8px;
 }
 
+/* #previousBtn {
+  position: fixed;
+  bottom: 10px;
+
+} */
 
 #quiz-room h3 {
   color: #333;
@@ -214,11 +232,11 @@ strong{
   text-align: left;
 }
 
-#submission-room .card{
-  width: 800px;
+#submission-room .card {
+  width: 300px;
 }
 
-#submission-room h3{
+#submission-room h3 {
   color: #333;
   font-size: 24px;
   padding-top: 20px;
@@ -226,7 +244,7 @@ strong{
 }
 
 /* stylize the listing of quiz options (e.g 'A: Option A', instead of, 'A. Option A' */
-@counter-style upper-alpha-alt{
+@counter-style upper-alpha-alt {
   /* system uses upper-alpha as list-style */
   system: extends upper-alpha;
   prefix: "";
@@ -242,7 +260,6 @@ li {
   margin-bottom: 0px;
   margin-left: 40px;
   padding-left: 20px;
-  
 }
 
 p {

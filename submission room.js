@@ -9,6 +9,7 @@ var displayedQuestionCountMax = document.getElementById(
 );
 
 var comment = document.getElementById("comment");
+var correctionPrompt = document.getElementById("correctionPrompt")
 
 function starRating() {
   var num = (correctAnswers / questionCountMax) * 5
@@ -22,8 +23,6 @@ function starRating() {
   
   }return icon+'<br><br>';
 }
-  
-
 // correctAnswers = 0
 // questionCountMax = 100
 
@@ -39,10 +38,16 @@ if (correctAnswers == questionCountMax) {
 } else if (correctAnswers > 0) {
   comment.innerHTML += "'Subpar 👎' <br><br>";
 } else {
-  comment.innerHTML += "'Null (❌_❌)'";
+  comment.innerHTML += "'Null (❌_❌)' <br><br>";
 }
 
 displayedScore.innerText = correctAnswers;
 displayedQuestionCountMax.innerText = questionCountMax;
+
+  
+  correctionPrompt.innerText = 'Review Answers'
+  
+
+
 
 console.log(exportData);

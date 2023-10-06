@@ -3,6 +3,9 @@ var exportData = [];
 function myFunction() {
   var previousBtn = document.getElementById("previousBtn");
   var nextBtn = document.getElementById("nextBtn");
+  var mainContent = document.getElementById("mainContent")
+  var mainContents = []
+
 
   var questions = [
     {
@@ -37,6 +40,7 @@ function myFunction() {
   var selectedOptions = [];
   for (var i in questions) {
     selectedOptions.push("");
+    mainContents.push("")
   }
 
   var randomizeQuestions = true;
@@ -63,6 +67,7 @@ function myFunction() {
   displayedQuestionCount.innerText = questionCount;
   displayedQuestionCountMax.innerText = questionCountMax;
   displayedQuestion.innerText = questions[questionCount - 1].question;
+  mainContents[questionCount - 1] = mainContent
 
   function fadingEffect(target, delay) {
     if (questionCount < questionCountMax) {
@@ -186,6 +191,7 @@ function myFunction() {
   }
 
   function nextPage(delay) {
+    mainContents.push(mainContent)
     setTimeout(function () {
       if (questionCount < questionCountMax) {
         questionCount++;
@@ -227,10 +233,10 @@ function myFunction() {
           }
         }
         exportData = [{ "questionCountMax": questionCountMax ,
-        "correctAnswers": correctAnswers }]
+        "correctAnswers": correctAnswers,"mainContents": mainContents }]
         localStorage.setItem("exportData", JSON.stringify(exportData));
 
-        console.log(exportData)
+
         var submitBtnLink = document.getElementById("submitBtnLink");
         submitBtnLink.href = "submission room.html";
         // alert("Score: "+correctAnswers+"/"+questionCountMax)
