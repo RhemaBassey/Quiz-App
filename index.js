@@ -3,7 +3,7 @@ var exportData = [];
 function myFunction() {
   var previousBtn = document.getElementById("previousBtn");
   var nextBtn = document.getElementById("nextBtn");
-  var mainContent = document.getElementById("mainContent")
+
   var mainContents = []
 
 
@@ -67,7 +67,10 @@ function myFunction() {
   displayedQuestionCount.innerText = questionCount;
   displayedQuestionCountMax.innerText = questionCountMax;
   displayedQuestion.innerText = questions[questionCount - 1].question;
-  mainContents[questionCount - 1] = mainContent
+  var mainContent = document.getElementById("mainContent")
+
+  var optionBtnClicked = false
+
 
   function fadingEffect(target, delay) {
     if (questionCount < questionCountMax) {
@@ -94,7 +97,11 @@ function myFunction() {
       //   this.classList.add("selected-btn");
       // }
 
+
       optionBtn.addEventListener("click", function () {
+
+       
+        mainContents[questionCount - 1] = mainContent.innerHTML
         fadingEffect(displayedOptions, fadeDelay);
         fadingEffect(num, fadeDelay);
         fadingEffect(displayedQuestion, fadeDelay);
@@ -129,7 +136,12 @@ function myFunction() {
           submitBtn(questionCountMax - 1, false);
         }, submitDelay);
 
-        nextPage(fadeDelay);
+        if(optionBtnClicked == false){
+          nextPage(fadeDelay);
+          optionBtnClicked = true
+        }
+        
+
       });
 
       displayedOptions.appendChild(optionBtn);
@@ -154,9 +166,10 @@ function myFunction() {
       })(n);
 
       n += 1;
-    }
 
-    for (var i = 0; i < questions[questionCount - 1].options.length; i++) {}
+    }
+  
+
 
     // for(var i; i< questions[questionCount - 1].options.length; i++){
 
@@ -168,6 +181,7 @@ function myFunction() {
     //     console.log(index)
     //   })
     // }
+    
   }
 
   function previousPage(delay) {
@@ -191,7 +205,7 @@ function myFunction() {
   }
 
   function nextPage(delay) {
-    mainContents.push(mainContent)
+    mainContents[questionCount - 1] = mainContent.innerHTML
     setTimeout(function () {
       if (questionCount < questionCountMax) {
         questionCount++;
@@ -206,6 +220,7 @@ function myFunction() {
   }
 
   addOptions(questions);
+
 
   previousBtn.classList.add("disabled");
 
