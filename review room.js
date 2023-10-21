@@ -6,6 +6,10 @@ var mainContents = exportData[0].mainContents
 
 var displayedCardMainContent = document.getElementById("cardMainContent")
 
-displayedCardMainContent.innerHTML = mainContents
+
+
+for (var content of mainContents){
+    displayedCardMainContent.innerHTML += "<br>" + content + "<br>"
+}
 
 console.log(mainContents)

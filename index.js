@@ -4,8 +4,7 @@ function myFunction() {
   var previousBtn = document.getElementById("previousBtn");
   var nextBtn = document.getElementById("nextBtn");
 
-  var mainContents = []
-
+  var mainContents = [];
 
   var questions = [
     {
@@ -40,7 +39,7 @@ function myFunction() {
   var selectedOptions = [];
   for (var i in questions) {
     selectedOptions.push("");
-    mainContents.push("")
+    mainContents.push("");
   }
 
   var randomizeQuestions = true;
@@ -67,10 +66,9 @@ function myFunction() {
   displayedQuestionCount.innerText = questionCount;
   displayedQuestionCountMax.innerText = questionCountMax;
   displayedQuestion.innerText = questions[questionCount - 1].question;
-  var mainContent = document.getElementById("mainContent")
+  var mainContent = document.getElementById("mainContent");
 
-  var optionBtnClicked = false
-
+  var optionBtnClicked = false;
 
   function fadingEffect(target, delay) {
     if (questionCount < questionCountMax) {
@@ -93,15 +91,16 @@ function myFunction() {
 
       optionBtn.innerHTML = "<li>" + option + "</li>";
 
+      // display correct answer
+      if(optionBtn.innerText == questions[questionCount - 1].answer){
+        optionBtn.classList.add("correct-option")
+      }
+
       // if (selectedOptions.some(n === selectedOptionsDetails.question_num && optionBtn.id === selectedOptionsDetails.option_index)) {
       //   this.classList.add("selected-btn");
       // }
 
-
       optionBtn.addEventListener("click", function () {
-
-       
-        mainContents[questionCount - 1] = mainContent.innerHTML
         fadingEffect(displayedOptions, fadeDelay);
         fadingEffect(num, fadeDelay);
         fadingEffect(displayedQuestion, fadeDelay);
@@ -111,6 +110,10 @@ function myFunction() {
           text: this.innerText,
           isCorrect: this.innerText == questions[questionCount - 1].answer,
         };
+
+        if(!selectedOptionsDetails.isCorrect){
+          this.classList.add("wrong-option")
+        }
 
         //removes other highlights
         for (var optionBtn of optionBtns) {
@@ -132,16 +135,14 @@ function myFunction() {
           submitDelay = fadeDelay;
         }
 
-        setTimeout(function () {
-          submitBtn(questionCountMax - 1, false);
-        }, submitDelay);
-
-        if(optionBtnClicked == false){
+        // to make multiclicks act as single clicks
+        if (optionBtnClicked == false) {
+          optionBtnClicked = true;
+          setTimeout(function () {
+            submitBtn(questionCountMax - 1, false);
+          }, submitDelay);
           nextPage(fadeDelay);
-          optionBtnClicked = true
         }
-        
-
       });
 
       displayedOptions.appendChild(optionBtn);
@@ -165,11 +166,9 @@ function myFunction() {
         }
       })(n);
 
+      optionBtnClicked = false;
       n += 1;
-
     }
-  
-
 
     // for(var i; i< questions[questionCount - 1].options.length; i++){
 
@@ -181,7 +180,6 @@ function myFunction() {
     //     console.log(index)
     //   })
     // }
-    
   }
 
   function previousPage(delay) {
@@ -205,7 +203,8 @@ function myFunction() {
   }
 
   function nextPage(delay) {
-    mainContents[questionCount - 1] = mainContent.innerHTML
+    mainContents[questionCount - 1] = mainContent.innerHTML;
+
     setTimeout(function () {
       if (questionCount < questionCountMax) {
         questionCount++;
@@ -221,7 +220,6 @@ function myFunction() {
 
   addOptions(questions);
 
-
   previousBtn.classList.add("disabled");
 
   previousBtn.addEventListener("click", function () {
@@ -234,6 +232,7 @@ function myFunction() {
   });
 
   function submitBtn(countMax, isSubmitBtn) {
+    mainContents[questionCount - 1] = mainContent.innerHTML;
     if (questionCount > countMax - 1) {
       //       // turn submit button green
       if (selectedOptions.includes("") == false) {
@@ -246,11 +245,16 @@ function myFunction() {
           if (option.isCorrect) {
             correctAnswers += 1;
           }
-        }
-        exportData = [{ "questionCountMax": questionCountMax ,
-        "correctAnswers": correctAnswers,"mainContents": mainContents }]
-        localStorage.setItem("exportData", JSON.stringify(exportData));
 
+        }
+        exportData = [
+          {
+            questionCountMax: questionCountMax,
+            correctAnswers: correctAnswers,
+            mainContents: mainContents,
+          },
+        ];
+        localStorage.setItem("exportData", JSON.stringify(exportData));
 
         var submitBtnLink = document.getElementById("submitBtnLink");
         submitBtnLink.href = "submission room.html";
@@ -265,7 +269,6 @@ function myFunction() {
       }
     }
   }
-
 }
 
 var body = document.getElementsByTagName("body")[0];

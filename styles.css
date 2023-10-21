@@ -139,7 +139,7 @@ strong {
   cursor: not-allowed;
 }
 
-.fade-in {
+#quiz-room .fade-in {
   opacity: 0;
   transition: opacity 0.4s;
 }
@@ -230,6 +230,18 @@ strong {
   padding-bottom: 20px;
   padding-left: 10%;
   text-align: left;
+}
+
+#review-room .correct-option{
+  background-color: #2bf72b;
+  border: 2px solid #2bf72b;
+  color: white;
+}
+
+#review-room .wrong-option{
+  background-color:#ec3131;
+  border: 2px solid #ec3131;
+  color: white;
 }
 
 #submission-room .card {
