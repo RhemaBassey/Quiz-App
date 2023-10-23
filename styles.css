@@ -209,11 +209,11 @@ strong {
   transform: translateY(4px);
 }
 
-#displayedQuestionCountMax {
+#submission-room #displayedQuestionCountMax {
   vertical-align: -4px;
 }
 
-#displayedScore {
+#submission-room #displayedScore {
   vertical-align: 8px;
 }
 
@@ -230,6 +230,10 @@ strong {
   padding-bottom: 20px;
   padding-left: 10%;
   text-align: left;
+}
+
+#quiz-room .hide{
+  display: none;
 }
 
 #review-room .correct-option{

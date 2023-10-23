@@ -91,10 +91,12 @@ function myFunction() {
 
       optionBtn.innerHTML = "<li>" + option + "</li>";
 
-      // display correct answer
-      if(optionBtn.innerText == questions[questionCount - 1].answer){
-        optionBtn.classList.add("correct-option")
+      // display correct answer by default
+      if (optionBtn.innerText == questions[questionCount - 1].answer) {
+        optionBtn.classList.add("correct-option");
       }
+      // set  mark symbol as fail by default
+      displayedQuestionCountMax.innerHTML = questionCountMax + "   <span class='hide'>❌ (unaswered)</span>"
 
       // if (selectedOptions.some(n === selectedOptionsDetails.question_num && optionBtn.id === selectedOptionsDetails.option_index)) {
       //   this.classList.add("selected-btn");
@@ -111,8 +113,12 @@ function myFunction() {
           isCorrect: this.innerText == questions[questionCount - 1].answer,
         };
 
-        if(!selectedOptionsDetails.isCorrect){
-          this.classList.add("wrong-option")
+        if (!selectedOptionsDetails.isCorrect) {
+          this.classList.add("wrong-option");
+          displayedQuestionCountMax.innerHTML = questionCountMax + "   <span class='hide'>❌</span>"
+        }
+        else{
+          displayedQuestionCountMax.innerHTML = questionCountMax + "   <span class='hide'>✔️</span>"
         }
 
         //removes other highlights
@@ -147,11 +153,14 @@ function myFunction() {
 
       displayedOptions.appendChild(optionBtn);
 
+      // making selected button permanently highlighted, if an option detail is part of selected options
       (function (index) {
         var id = index;
         var optionDetails = {
           question_num: questionCount,
           option_index: id,
+          // isCorrect: this.innerText == questions[questionCount - 1].answer,
+       
         };
 
         if (
@@ -163,6 +172,14 @@ function myFunction() {
         ) {
           var highlightBtn = document.getElementById(index);
           highlightBtn.classList.add("selected-btn");
+
+          if (highlightBtn.innerText != questions[questionCount - 1].answer) {
+            highlightBtn.classList.add("wrong-option");
+            displayedQuestionCountMax.innerHTML = questionCountMax + "   <span class='hide'>❌</span>"
+          }
+          else{
+            displayedQuestionCountMax.innerHTML = questionCountMax + "   <span class='hide'>✔️</span>"
+          }
         }
       })(n);
 
@@ -245,7 +262,6 @@ function myFunction() {
           if (option.isCorrect) {
             correctAnswers += 1;
           }
-
         }
         exportData = [
           {
@@ -258,6 +274,7 @@ function myFunction() {
 
         var submitBtnLink = document.getElementById("submitBtnLink");
         submitBtnLink.href = "submission room.html";
+
         // alert("Score: "+correctAnswers+"/"+questionCountMax)
       }
       // text change to submit
