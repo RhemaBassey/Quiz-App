@@ -68,6 +68,10 @@ function myFunction() {
   displayedQuestion.innerText = questions[questionCount - 1].question;
   var mainContent = document.getElementById("mainContent");
 
+  // set  mark symbol as fail by default
+  displayedQuestionCountMax.innerHTML =
+    questionCountMax + "   <span class='hide'>❌ (unanswered)</span>";
+
   var optionBtnClicked = false;
 
   function fadingEffect(target, delay) {
@@ -95,8 +99,8 @@ function myFunction() {
       if (optionBtn.innerText == questions[questionCount - 1].answer) {
         optionBtn.classList.add("correct-option");
       }
-      // set  mark symbol as fail by default
-      displayedQuestionCountMax.innerHTML = questionCountMax + "   <span class='hide'>❌ (unaswered)</span>"
+      // // set  mark symbol as fail by default
+      // displayedQuestionCountMax.innerHTML = questionCountMax + "   <span class='hide'>❌ (unanswered)</span>"
 
       // if (selectedOptions.some(n === selectedOptionsDetails.question_num && optionBtn.id === selectedOptionsDetails.option_index)) {
       //   this.classList.add("selected-btn");
@@ -113,13 +117,14 @@ function myFunction() {
           isCorrect: this.innerText == questions[questionCount - 1].answer,
         };
 
-        if (!selectedOptionsDetails.isCorrect) {
-          this.classList.add("wrong-option");
-          displayedQuestionCountMax.innerHTML = questionCountMax + "   <span class='hide'>❌</span>"
-        }
-        else{
-          displayedQuestionCountMax.innerHTML = questionCountMax + "   <span class='hide'>✔️</span>"
-        }
+        // if (!selectedOptionsDetails.isCorrect) {
+        //   this.classList.add("wrong-option");
+        //   displayedQuestionCountMax.innerHTML =
+        //     questionCountMax + "   <span class='hide'>❌</span>";
+        // } else {
+        //   displayedQuestionCountMax.innerHTML =
+        //     questionCountMax + "   <span class='hide'>✔️</span>";
+        // }
 
         //removes other highlights
         for (var optionBtn of optionBtns) {
@@ -160,7 +165,6 @@ function myFunction() {
           question_num: questionCount,
           option_index: id,
           // isCorrect: this.innerText == questions[questionCount - 1].answer,
-       
         };
 
         if (
@@ -173,13 +177,14 @@ function myFunction() {
           var highlightBtn = document.getElementById(index);
           highlightBtn.classList.add("selected-btn");
 
-          if (highlightBtn.innerText != questions[questionCount - 1].answer) {
-            highlightBtn.classList.add("wrong-option");
-            displayedQuestionCountMax.innerHTML = questionCountMax + "   <span class='hide'>❌</span>"
-          }
-          else{
-            displayedQuestionCountMax.innerHTML = questionCountMax + "   <span class='hide'>✔️</span>"
-          }
+          // if (highlightBtn.innerText != questions[questionCount - 1].answer) {
+          //   highlightBtn.classList.add("wrong-option");
+          //   displayedQuestionCountMax.innerHTML =
+          //     questionCountMax + "   <span class='hide'>❌</span>";
+          // } else {
+          //   displayedQuestionCountMax.innerHTML =
+          //     questionCountMax + "   <span class='hide'>✔️</span>";
+          // }
         }
       })(n);
 
@@ -257,11 +262,42 @@ function myFunction() {
       }
 
       if (questionCount == questionCountMax && isSubmitBtn == true) {
+        var exportedMainContents = [];
         correctAnswers = 0;
         for (var option of selectedOptions) {
+          var exportedMainContent = document.createElement("span");
+          exportedMainContent.innerHTML = mainContents[option.question_num - 1];
+
+          function convertToAscii(num) {
+            let stringifyNum = num.toString()
+            var asciiString =''
+            for (var i=0; i < stringifyNum.length; i++) {
+              asciiString +='\\'+'3'+ stringifyNum[i]
+            }
+            return asciiString
+          }
+
+          let highlightedBtn = exportedMainContent.querySelector(
+            "#" + convertToAscii(option.option_index)
+          );
+          
+          console.log(highlightedBtn.innerText);
+
+          // var selectedOptionsDetails = {
+          //   question_num: questionCount,
+          //   option_index: this.id,
+          //   text: this.innerText,
+          //   isCorrect: this.innerText == questions[questionCount - 1].answer,
+          // };
+
           if (option.isCorrect) {
             correctAnswers += 1;
           }
+
+          // highlightBtn = exportedMainContent.querySelector('#'+ option.question_num -1)
+
+          // y.innerText = y.innerText + " ;-)"
+
         }
         exportData = [
           {
@@ -273,7 +309,7 @@ function myFunction() {
         localStorage.setItem("exportData", JSON.stringify(exportData));
 
         var submitBtnLink = document.getElementById("submitBtnLink");
-        submitBtnLink.href = "submission room.html";
+        // submitBtnLink.href = "submission room.html";
 
         // alert("Score: "+correctAnswers+"/"+questionCountMax)
       }
