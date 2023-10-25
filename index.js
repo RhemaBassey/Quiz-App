@@ -70,7 +70,7 @@ function myFunction() {
 
   // set  mark symbol as fail by default
   displayedQuestionCountMax.innerHTML =
-    questionCountMax + "   <span class='hide'>❌ (unanswered)</span>";
+    questionCountMax;
 
   var optionBtnClicked = false;
 
@@ -262,26 +262,11 @@ function myFunction() {
       }
 
       if (questionCount == questionCountMax && isSubmitBtn == true) {
-        var exportedMainContents = [];
+
         correctAnswers = 0;
         for (var option of selectedOptions) {
-          var exportedMainContent = document.createElement("span");
-          exportedMainContent.innerHTML = mainContents[option.question_num - 1];
 
-          function convertToAscii(num) {
-            let stringifyNum = num.toString()
-            var asciiString =''
-            for (var i=0; i < stringifyNum.length; i++) {
-              asciiString +='\\'+'3'+ stringifyNum[i]
-            }
-            return asciiString
-          }
-
-          let highlightedBtn = exportedMainContent.querySelector(
-            "#" + convertToAscii(option.option_index)
-          );
           
-          console.log(highlightedBtn.innerText);
 
           // var selectedOptionsDetails = {
           //   question_num: questionCount,
@@ -304,12 +289,13 @@ function myFunction() {
             questionCountMax: questionCountMax,
             correctAnswers: correctAnswers,
             mainContents: mainContents,
+            selectedOptions: selectedOptions
           },
         ];
         localStorage.setItem("exportData", JSON.stringify(exportData));
 
         var submitBtnLink = document.getElementById("submitBtnLink");
-        // submitBtnLink.href = "submission room.html";
+        submitBtnLink.href = "submission room.html";
 
         // alert("Score: "+correctAnswers+"/"+questionCountMax)
       }
