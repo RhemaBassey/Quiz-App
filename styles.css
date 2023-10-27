@@ -114,12 +114,12 @@ strong {
   overflow-y: auto; /* Enable vertical scrolling */
 }
 
-.scrollable-content::-webkit-scrollbar{
+.scrollable-content::-webkit-scrollbar {
   width: 8px;
 }
 
 .scrollable-content::-webkit-scrollbar-thumb {
-  background-color:#ccc;
+  background-color: #ccc;
   border-radius: 8px;
 }
 
@@ -127,7 +127,6 @@ strong {
   background-color: ghostwhite;
   border-radius: 8px;
 }
-
 
 .card-text {
   /* margin: 0 auto; */
@@ -209,6 +208,33 @@ strong {
   transform: translateY(4px);
 }
 
+#homepage p {
+  color: ghostwhite;
+}
+
+#homepage .card {
+  height: 300px;
+  width: 300px;
+  display: inline-block;
+  margin: 20px 20px;
+  
+
+}
+
+#subjectsContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.subjectcardimage{
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-top: 5px;
+  height: 90%;
+  width: 110% ;
+
+}
+
 #submission-room #displayedQuestionCountMax {
   vertical-align: -4px;
 }
@@ -232,21 +258,23 @@ strong {
   text-align: left;
 }
 
-#quiz-room .hide{
+#quiz-room .hide {
   display: none;
 }
 
-#review-room .correct-option{
+#review-room .correct-option {
   background-color: #2bf72b;
   border: 2px solid #2bf72b;
   color: white;
 }
 
-#review-room .wrong-option{
-  background-color:#ec3131;
+#review-room .wrong-option {
+  background-color: #ec3131;
   border: 2px solid #ec3131;
   color: white;
 }
+
+
 
 #submission-room .card {
   width: 300px;
