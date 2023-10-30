@@ -208,51 +208,135 @@ strong {
   transform: translateY(4px);
 }
 
-
 #homepage h2 {
   padding-bottom: 10px;
 }
 
+
 #homepage p {
-  color:#333;
+  /* color: #333; */
+  color: rgb(0, 0, 95);
   margin: 10px auto;
-  padding-bottom: 8px;
+  font-size: 0.85rem;
 }
 
-.homepage-body{
+.homepage-body {
   background-color: indigo;
 }
 
-#homepage .card {
-  height: 400px;
-  width: 400px;
+
+#homepage  .card {
+  height: 350px;
+  width: 350px;
   display: inline-block;
   margin: 20px 20px;
-  background-color:aliceblue;
-  cursor: pointer; 
-  border: 10px solid aliceblue;
+  background-color: hsl(278, 100%, 75%);
+  cursor: pointer;
+
+  box-sizing: border-box;
+  border: 10px solid transparent;
+  transition: border-width 0.05s ease;
+  color: rgb(0, 0, 95);
+ 
+  /* Add this line */
+  box-sizing: border-box;
+  
+  -webkit-transition: color 0.25s 0.0833333333s;
+  transition: color 0.25s 0.0833333333s;
+  
+  position: relative;
+  
+  overflow-y: auto;
+}
+
+#homepage .card::-webkit-scrollbar {
+    display: none;
+}
+
+#homepage .card::before,
+#homepage .card::after {
+    border: 0 solid transparent;
+    box-sizing: border-box;
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#homepage .card::before {
+    border-bottom-width: 3px;
+    border-left-width:   3px;
+}
+
+#homepage .card::after {
+    border-top-width:    3px;
+    border-right-width:   3px;
 }
 
 #homepage .card:hover {
-  background-color:hsl(288, 96%, 53%);
-  border: 0px solid hsl(288, 96%, 53%);
-  
+  background-color: hsl(286, 100%, 80%);
+  border: 0px solid transparent;
 }
+#homepage .card:hover p{
+  color: indigo;
+  margin-bottom: -10px;
+  font-size: 0.95rem;
+}
+
+#homepage .card:hover::before,
+#homepage .card:hover::after {
+    border-color:#eb196e;
+
+    -webkit-transition:border-color .2s,width .25s,height .25s; 
+       -moz-transition:border-color .2s,width .25s,height .25s; 
+         -o-transition:border-color .2s,width .25s,height .25s; 
+            transition:border-color .2s,width .25s,height .25s;
+
+    width:100%; 
+    height:100%;
+}
+
+#homepage .card:hover::before {
+    -webkit-transition-delay:.1s,.1s,.25s; 
+       -moz-transition-delay:.1s,.1s,.25s; 
+         -o-transition-delay:.1s,.1s,.25s; 
+            transition-delay:.1s,.1s,.25s; 
+}
+
+#homepage .card:hover::after {
+    -webkit-transition-delay:.1s,.25s,0; 
+       -moz-transition-delay:.1s,.25s,0; 
+         -o-transition-delay:.1s,.25s,0; 
+            transition-delay:.1s,.25s,0; 
+}
+#homepage .card:hover h2 {
+  color: indigo;
+  margin: -7px auto;
+  font-size: 1.8rem;
+}
+
+#homepage .heading p,
+#homepage .heading h1,
+#homepage .heading h2{
+  color: white
+}
+
 
 #subjectsContainer {
   width: 80%;
   margin: 0 auto;
 }
 
-.subjectcardimage{
+.subjectcardimage {
   margin-left: -10px;
   margin-right: -10px;
   margin-top: 5px;
   height: 70%;
-  width: 100% ;
+  width: 100%;
   border-radius: 10px;
-
-
 }
 
 #submission-room #displayedQuestionCountMax {
@@ -293,8 +377,6 @@ strong {
   border: 2px solid #ec3131;
   color: white;
 }
-
-
 
 #submission-room .card {
   width: 300px;

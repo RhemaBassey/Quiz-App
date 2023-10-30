@@ -47,5 +47,15 @@ document.addEventListener("DOMContentLoaded", function () {
     subjectCard.appendChild(subjectCardText);
 
     subjectsContainer.appendChild(subjectCard);
+
+    
+  subjectCard.addEventListener('click', function() {
+    // Define the URL you want to navigate to
+    var destinationURL = 'quiz room.html'; // Replace with your desired URL
+
+    // Redirect to the specified URL
+    window.location.href = destinationURL;
+  });
   }
+
 });
