@@ -27,6 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
       title: "Random",
       text: " Challenge yourself with a mix of questions from different subjects, providing a diverse and fun quiz experience.",
     },
+    {
+      title: "Randomtwo",
+      text: " Challenge yourself with a mix of questions from different subjects, providing a diverse and fun quiz experience.",
+    },
   ];
 
   for (subject of subjects) {
@@ -48,13 +52,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     subjectsContainer.appendChild(subjectCard);
 
-    
+  
   subjectCard.addEventListener('click', function() {
     // Define the URL you want to navigate to
     var destinationURL = 'quiz room.html'; // Replace with your desired URL
 
     // Redirect to the specified URL
     window.location.href = destinationURL;
+
+    localStorage.setItem("subject", JSON.stringify(this.querySelector('h2').innerText))
   });
   }
 

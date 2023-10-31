@@ -233,25 +233,24 @@ strong {
   background-color: hsl(278, 100%, 75%);
   cursor: pointer;
 
-  box-sizing: border-box;
+
   border: 10px solid transparent;
-  transition: border-width 0.05s ease;
+
   color: rgb(0, 0, 95);
  
   /* Add this line */
   box-sizing: border-box;
   
-  -webkit-transition: color 0.25s 0.0833333333s;
-  transition: color 0.25s 0.0833333333s;
+
+  transition: color 0.5s 0.0833333333s;
   
   position: relative;
   
   overflow-y: auto;
+
+  overflow: hidden;
 }
 
-#homepage .card::-webkit-scrollbar {
-    display: none;
-}
 
 #homepage .card::before,
 #homepage .card::after {
@@ -278,7 +277,9 @@ strong {
 
 #homepage .card:hover {
   background-color: hsl(286, 100%, 80%);
+  /* transition: border 0.5s ease; */
   border: 0px solid transparent;
+
 }
 #homepage .card:hover p{
   color: indigo;
@@ -288,30 +289,10 @@ strong {
 
 #homepage .card:hover::before,
 #homepage .card:hover::after {
-    border-color:#eb196e;
-
-    -webkit-transition:border-color .2s,width .25s,height .25s; 
-       -moz-transition:border-color .2s,width .25s,height .25s; 
-         -o-transition:border-color .2s,width .25s,height .25s; 
-            transition:border-color .2s,width .25s,height .25s;
-
     width:100%; 
     height:100%;
 }
 
-#homepage .card:hover::before {
-    -webkit-transition-delay:.1s,.1s,.25s; 
-       -moz-transition-delay:.1s,.1s,.25s; 
-         -o-transition-delay:.1s,.1s,.25s; 
-            transition-delay:.1s,.1s,.25s; 
-}
-
-#homepage .card:hover::after {
-    -webkit-transition-delay:.1s,.25s,0; 
-       -moz-transition-delay:.1s,.25s,0; 
-         -o-transition-delay:.1s,.25s,0; 
-            transition-delay:.1s,.25s,0; 
-}
 #homepage .card:hover h2 {
   color: indigo;
   margin: -7px auto;

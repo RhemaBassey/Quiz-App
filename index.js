@@ -1,38 +1,25 @@
 var exportData = [];
+var subject = JSON.parse(localStorage.getItem("subject"));
+
+
 
 function myFunction() {
+  var title = document.getElementsByTagName('title')[0]
+  title.innerText = "Quiz: "+ subject +" Quiz"
+
+  var heading = document.getElementsByClassName('heading')[0]
+  heading.innerText = subject +" Quiz"
+
+
   var previousBtn = document.getElementById("previousBtn");
   var nextBtn = document.getElementById("nextBtn");
 
   var mainContents = [];
 
-  var questions = [
-    {
-      question: "Q1",
-      options: ["Q1 OP1", "Q1 OP2", "Q1 OP3", "Q1 OP4"],
-      answer: "Q1 OP1",
-    },
-    {
-      question: "Q2",
-      options: ["Q2 OP1", "Q2 OP2"],
-      answer: "Q2 OP2",
-    },
-    {
-      question: "Q3",
-      options: ["Q3 OP1", "Q3 OP2", "Q3 OP3", "Q3 OP4"],
-      answer: "Q3 OP3",
-    },
-    {
-      question: "Q4",
-      options: ["Q4 OP1", "Q4 OP2", "Q4 OP3"],
-      answer: "Q4 OP2",
-    },
-    {
-      question: "Q5",
-      options: ["Q5 OP1", "Q5 OP2", "Q5 OP3", "Q5 OP4", "Q5 OP5"],
-      answer: "Q5 OP1",
-    },
-  ];
+// try not to use localStorage for this, use import instead
+  var questions = JSON.parse(localStorage.getItem(subject+"Questions"));
+  console.log(questions)
+
 
   var correctAnswers = 1;
 
@@ -311,6 +298,14 @@ function myFunction() {
 }
 
 var body = document.getElementsByTagName("body")[0];
+
+// remote question viewing
+var script = document.createElement('script')
+script.src = 'quiz questions/'+subject+'.js'
+body.appendChild(script)
+
+
+
 
 if (body.id == "quiz-room") {
   document.addEventListener("DOMContentLoaded", myFunction());
