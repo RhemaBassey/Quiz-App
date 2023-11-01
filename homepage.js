@@ -27,10 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
       title: "Random",
       text: " Challenge yourself with a mix of questions from different subjects, providing a diverse and fun quiz experience.",
     },
-    {
-      title: "Randomtwo",
-      text: " Challenge yourself with a mix of questions from different subjects, providing a diverse and fun quiz experience.",
-    },
   ];
 
   for (subject of subjects) {

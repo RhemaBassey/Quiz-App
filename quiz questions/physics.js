@@ -1,4 +1,4 @@
-var questions = [
+export var questions = [
     {
       question: "Physics Q1",
       options: ["Q1 OP1", "Q1 OP2", "Q1 OP3", "Q1 OP4"],
@@ -24,6 +24,4 @@ var questions = [
       options: ["Q5 OP1", "Q5 OP2", "Q5 OP3", "Q5 OP4", "Q5 OP5"],
       answer: "Q5 OP1",
     },
-  ];
-
-  localStorage.setItem("PhysicsQuestions", JSON.stringify(questions))
+  ].sort(() => Math.random() - 0.5);
