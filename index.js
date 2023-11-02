@@ -47,9 +47,9 @@ import(questionsPath).then((module) => {
 
     var mainContents = [];
 
-    var maxAllowedQuestions = 10
+    var maxAllowedQuestions = 10;
 
-    questions = questions.slice(0,maxAllowedQuestions)
+    questions = questions.slice(0, maxAllowedQuestions);
 
     // try not to use localStorage for this, use import instead
     // var questions = JSON.parse(localStorage.getItem(subject+"Questions"));
@@ -72,7 +72,7 @@ import(questionsPath).then((module) => {
     }
 
     var questionCount = 1;
-        var questionCountMax = 5
+    var questionCountMax = 5;
     var questionCountMax = questions.length;
 
     var num = document.getElementById("num");
@@ -94,6 +94,7 @@ import(questionsPath).then((module) => {
     displayedQuestionCountMax.innerHTML = questionCountMax;
 
     var optionBtnClicked = false;
+    var showPrompt;
 
     function fadingEffect(target, delay) {
       if (questionCount < questionCountMax) {
@@ -274,6 +275,10 @@ import(questionsPath).then((module) => {
       nextPage();
     });
 
+
+    
+
+
     function submitBtn(countMax, isSubmitBtn) {
       mainContents[questionCount - 1] = mainContent.innerHTML;
       if (questionCount > countMax - 1) {
@@ -296,6 +301,11 @@ import(questionsPath).then((module) => {
               correctAnswers += 1;
             }
 
+            if (option == "") {
+              showPrompt = true;
+              console.log("false");
+            }
+
             // highlightBtn = exportedMainContent.querySelector('#'+ option.question_num -1)
 
             // y.innerText = y.innerText + " ;-)"
@@ -310,8 +320,68 @@ import(questionsPath).then((module) => {
           ];
           localStorage.setItem("exportData", JSON.stringify(exportData));
 
-          var submitBtnLink = document.getElementById("submitBtnLink");
-          submitBtnLink.href = "submission room.html";
+          // var submitBtnLink = document.getElementById("submitBtnLink");
+          //prompts you to answer all questions
+
+          function showCustomDialog() {
+            document.getElementById('customDialog').style.display = 'block';
+            document.body.addEventListener('click', handleOutsideClick);
+          }
+          
+          function hideCustomDialog() {
+            document.getElementById('customDialog').style.display = 'none';
+            document.body.removeEventListener('click', handleOutsideClick);
+          }
+
+          function handleYes() {
+            var yesBtn = document.getElementById('customDialog').querySelector('.yes-btn')
+            console.log(han)
+            hideCustomDialog();
+          }
+          
+          function handleNo() {
+            alert("You clicked 'NO'");
+            hideCustomDialog();
+          }
+
+
+
+          if (showPrompt) {
+            function handleOutsideClick(event) {
+              if (!document.getElementById('customDialog').contains(event.target)) {
+                hideCustomDialog();
+              }
+            }
+  
+            // if (window.confirm("You have 1 or more unaswered questions. Submit anyways?")) {
+            //   submitBtnLink.href = "submission room.html";
+            // } else {
+            //   //
+            // }
+            // Swal.fire({
+            //   title: "You have 1 or more unaswered questions. Submit anyways?",
+            //   showCancelButton: true,
+            //   confirmButtonText: "Yes",
+            //   cancelButtonText: "No",
+            // }).then((result) => {
+            //   if (result.isConfirmed) {
+            //     var submitBtnLink = document.getElementById("submitBtnLink");
+            //     submitBtnLink.href = "submission room.html";
+            //     console.log('User clicked No');
+            //   } else {
+            //     console.log('User clicked No');
+            //   }
+            // });
+
+            showCustomDialog()
+            
+
+          }
+          else{
+            var submitBtnLink = document.getElementById("submitBtnLink");
+            submitBtnLink.href = "submission room.html";
+
+          }
 
           // alert("Score: "+correctAnswers+"/"+questionCountMax)
         }
@@ -326,16 +396,14 @@ import(questionsPath).then((module) => {
     }
   }
 
+  var body = document.getElementsByTagName("body")[0];
 
-var body = document.getElementsByTagName("body")[0];
+  // remote question viewing
+  // var script = document.createElement('script')
+  // script.src = 'quiz questions/'+subject+'.js'
+  // body.appendChild(script)
 
-// remote question viewing
-// var script = document.createElement('script')
-// script.src = 'quiz questions/'+subject+'.js'
-// body.appendChild(script)
-
-if (body.id == "quiz-room") {
-  document.addEventListener("DOMContentLoaded", myFunction());
-}
-
+  if (body.id == "quiz-room") {
+    document.addEventListener("DOMContentLoaded", myFunction());
+  }
 });

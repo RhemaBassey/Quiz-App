@@ -21,14 +21,48 @@
     <link rel="stylesheet" href="styles.css" />
 
     <title>Quiz: Subject Quiz</title>
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   </head>
   <body id="quiz-room">
     <h1 class="heading">Subject Quiz</h1>
     <p class="heading">Please select the correct answer</p>
     <br />
 
-    <div class="card">
 
+    <!-- show prompt if you don't answer all questions before submitting -->
+
+    <div class="custom-dialog" id="customDialog">
+      <p></p>
+      <div class="button-container">
+        <button class="btn-basic yes-btn" onclick="handleYes()">YES</button>
+        <button class="btn-basic no-btn" onclick="handleNo()">NO</button>
+      </div>
+    </div>
+
+    <!-- <script>
+      function showCustomDialog() {
+        document.getElementById("customDialog").style.display = "block";
+        document.body.addEventListener('click', handleOutsideClick);
+      }
+
+      function hideCustomDialog() {
+        document.getElementById("customDialog").style.display = "none";
+        document.body.addEventListener('click', handleOutsideClick);
+      }
+
+      function handleYes() {
+        location.href='submission room.html' 
+        hideCustomDialog();
+      }
+
+      function handleNo() {
+        hideCustomDialog();
+      }
+    </script> -->
+
+    <div class="card">
       <div class="scrollable-content" id="mainContent">
         <h3>
           Question <span id="displayedQuestionCount">1</span> of
