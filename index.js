@@ -275,10 +275,6 @@ import(questionsPath).then((module) => {
       nextPage();
     });
 
-
-    
-
-
     function submitBtn(countMax, isSubmitBtn) {
       mainContents[questionCount - 1] = mainContent.innerHTML;
       if (questionCount > countMax - 1) {
@@ -288,7 +284,83 @@ import(questionsPath).then((module) => {
         }
 
         if (questionCount == questionCountMax && isSubmitBtn == true) {
+          //-----------------------------------------------------------------------------
+          var customDialog = document.createElement("span");
+          // customDialog.innerHTML =
+          //   '<div class="custom-dialog" id="customDialog">' +
+          //   "<p>You have one or more unanswered questions...<br>Submit?</p>" +
+          //   '<div class="button-container">' +
+          //   '<button class="btn-basic yes-btn" onclick="handleYes()">YES</button>' +
+          //   '<button class="btn-basic no-btn" onclick="handleNo()">NO</button>' +
+          //   "</div>";
+
+          customDialog.id = "customDialog";
+          customDialog.className = "custom-dialog";
+          var customDialogMessage = document.createElement("p");
+          customDialogMessage.id = "customDialogMessage"
+          // customDialogMessage.innerText =
+          //   "You have one or more unaswered questions... Submit?";
+          var buttonContainer = document.createElement("div");
+          buttonContainer.className = "button-container";
+          var yesButton = document.createElement("button");
+          yesButton.className = "btn-basic yes-btn";
+          yesButton.innerText = "YES";
+          yesButton.onclick = handleYes;
+          var noButton = document.createElement("button");
+          noButton.className = "btn-basic no-btn";
+          noButton.innerText = "NO";
+          noButton.onclick = handleNo;
+          buttonContainer.appendChild(yesButton);
+          buttonContainer.appendChild(noButton);
+
+          customDialog.appendChild(customDialogMessage);
+          customDialog.appendChild(buttonContainer);
+
+
+          body.appendChild(customDialog);
+
+          // var submitBtnLink = document.getElementById("submitBtnLink");
+          //prompts you to answer all questions
+          function showCustomDialog() {
+            var overlay = document.getElementById('overlay');
+            overlay.style.display = 'block';
+
+            document.getElementById("customDialog").style.display = "block";
+            // document.body.addEventListener('click', handleOutsideClick);
+          }
+
+          function hideCustomDialog() {
+
+
+            overlay.style.display = 'none'; 
+            document.getElementById("customDialog").style.display = "none";
+            // document.body.addEventListener('click', handleOutsideClick);
+          }
+
+          function handleYes() {
+            location.href='submission room.html'
+            hideCustomDialog();
+          }
+
+          function handleNo() {
+            hideCustomDialog();
+          }
+
+          document.addEventListener('click', function(event) {
+            if (!document.getElementById('customDialog').contains(event.target) && !nextBtn.contains(event.target)) {
+              hideCustomDialog();
+            }
+          });
+          // document.addEventListener("click", function (event) {
+          //   if (
+          //     !document.getElementById("customDialog").contains(event.target)
+          //   ) {
+          //     hideCustomDialog();
+          //   }
+          // });
+          //-----------------------------------------------------------------------------
           correctAnswers = 0;
+          var unanswered = 0
           for (var option of selectedOptions) {
             // var selectedOptionsDetails = {
             //   question_num: questionCount,
@@ -299,17 +371,55 @@ import(questionsPath).then((module) => {
 
             if (option.isCorrect) {
               correctAnswers += 1;
+              
             }
 
             if (option == "") {
-              showPrompt = true;
-              console.log("false");
-            }
+              unanswered += 1;
+            }            
 
             // highlightBtn = exportedMainContent.querySelector('#'+ option.question_num -1)
 
             // y.innerText = y.innerText + " ;-)"
           }
+
+          // customDialogMessage.remove(innerText)
+          var displayedCustomDialogMessage = document.getElementById("customDialogMessage") 
+          // var x = document.getElementById('customDialog').querySelector('p')
+
+          if(unanswered == 0){
+            displayedCustomDialogMessage.innerText = "Are you sure you want to submit?"
+          }
+
+
+          else if(unanswered == 1){
+            displayedCustomDialogMessage.innerText = "You have "+unanswered+" unanswered question...\nSubmit?"
+
+            console.log(unanswered)
+          }
+
+          else if(unanswered> 1){
+
+            displayedCustomDialogMessage.innerText = "You have "+unanswered+" unanswered questions...\nSubmit?"
+           
+            console.log(unanswered)
+          }
+
+
+
+          // commented this out so it always show prompt, even if there are no unanswered questions
+          // if (
+          //   selectedOptions.some(
+          //     (option) =>
+          //       option ==""
+          //   )
+          // ) {
+          //   showPrompt = true
+          // }
+          // else{
+          //   showPrompt = false
+          // }
+
           exportData = [
             {
               questionCountMax: questionCountMax,
@@ -320,68 +430,11 @@ import(questionsPath).then((module) => {
           ];
           localStorage.setItem("exportData", JSON.stringify(exportData));
 
-          // var submitBtnLink = document.getElementById("submitBtnLink");
-          //prompts you to answer all questions
-
-          function showCustomDialog() {
-            document.getElementById('customDialog').style.display = 'block';
-            document.body.addEventListener('click', handleOutsideClick);
-          }
           
-          function hideCustomDialog() {
-            document.getElementById('customDialog').style.display = 'none';
-            document.body.removeEventListener('click', handleOutsideClick);
-          }
+          showCustomDialog();
+            // var submitBtnLink = document.getElementById("submitBtnLink");
+            // submitBtnLink.href = "submission room.html";
 
-          function handleYes() {
-            var yesBtn = document.getElementById('customDialog').querySelector('.yes-btn')
-            console.log(han)
-            hideCustomDialog();
-          }
-          
-          function handleNo() {
-            alert("You clicked 'NO'");
-            hideCustomDialog();
-          }
-
-
-
-          if (showPrompt) {
-            function handleOutsideClick(event) {
-              if (!document.getElementById('customDialog').contains(event.target)) {
-                hideCustomDialog();
-              }
-            }
-  
-            // if (window.confirm("You have 1 or more unaswered questions. Submit anyways?")) {
-            //   submitBtnLink.href = "submission room.html";
-            // } else {
-            //   //
-            // }
-            // Swal.fire({
-            //   title: "You have 1 or more unaswered questions. Submit anyways?",
-            //   showCancelButton: true,
-            //   confirmButtonText: "Yes",
-            //   cancelButtonText: "No",
-            // }).then((result) => {
-            //   if (result.isConfirmed) {
-            //     var submitBtnLink = document.getElementById("submitBtnLink");
-            //     submitBtnLink.href = "submission room.html";
-            //     console.log('User clicked No');
-            //   } else {
-            //     console.log('User clicked No');
-            //   }
-            // });
-
-            showCustomDialog()
-            
-
-          }
-          else{
-            var submitBtnLink = document.getElementById("submitBtnLink");
-            submitBtnLink.href = "submission room.html";
-
-          }
 
           // alert("Score: "+correctAnswers+"/"+questionCountMax)
         }
