@@ -247,6 +247,7 @@ import(questionsPath).then((module) => {
     }
 
     function nextPage(delay) {
+
       mainContents[questionCount - 1] = mainContent.innerHTML;
 
       setTimeout(function () {
@@ -259,7 +260,11 @@ import(questionsPath).then((module) => {
           displayedQuestion.innerText = questions[questionCount - 1].question;
           addOptions(questions);
         }
+        window.scrollTo(0, 0); // start from the top of the page, after the fade effect
+        mainContent.scrollTo(0,0); // start from the top of the scrollable content in the card, after the fade effect
+  
       }, delay);
+
     }
 
     addOptions(questions);

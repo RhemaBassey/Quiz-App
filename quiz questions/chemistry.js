@@ -266,10 +266,36 @@ export var questions = [
     options: ["8", "5", "7", "10"],
     answer: "10",
   },
+  {
+    question: "What is the common name of Mercury Sulfide?",
+    options: ["Marsh Gas", "Mohr's Salt", "Potash Alum", "Vermilion"],
+    answer: "Vermilion",
+  },
+  {
+    question:
+      "CO2 when passed in excess, in lime water turns colourless again because of:",
+    options: [
+      "Calcium Carbonate",
+      "Calcium bicarbonate",
+      "Calcium Chloride",
+      "Copper Carbonate",
+    ],
+    answer: "Calcium bicarbonate",
+  },
+  {
+    question:
+      "To which category of reactions does the following chemical reaction belong?\nNaCl(aq) + AgNO3(aq) → NaNO3(aq) + AgCl(s)",
+    options: [
+      "Double displacement reaction",
+      "Redox reaction",
+      "Displacement reaction",
+      "Combination reaction",
+    ],
+    answer: "Double displacement reaction",
+  },
+  {
+    question: "What is pH of Lemon Juice?",
+    options: ["3.8", "5.5", "6.6", "2.5"],
+    answer: "2.5",
+  },
 ].sort(() => Math.random() - 0.5);
-
-// Chemistry Question 11: What is the common name of Mercury Sulfide?Marsh GasMohr's SaltPotash AlumVermilionAnswer (Detailed Solution Below)Option 4 : Vermilion
-// Chemistry Question 12: CO2 when passed in excess, in lime water turns colourless again because of:Calcium CarbonateCalcium bicarbonateCalcium ChlorideCopper CarbonateAnswer (Detailed Solution Below)Option 2 : Calcium bicarbonate
-// Chemistry Question 13: To which category of reactions does the following chemical reaction belong?NaCl(aq) + AgNO3(aq) → NaNO3(aq) + AgCl(s)Double displacement reactionRedox reactionDisplacement reactionCombination reactionAnswer (Detailed Solution Below)Option 1 : Double displacement reaction
-// Chemistry Question 14: What is pH of Lemon Juice?3.85.56.62.5Answer (Detailed Solution Below)Option 4 : 2.5
-// Chemistry Question 15: Detailed SolutionAluminium (Al) metal reacts with steam to form a metal oxide and hydrogen.This reaction can be given as2Al + 3H2O (g) → Al2O3 + 3H2 (g)Other metals of this type are Iron (Fe) and Zinc (Zn).But these metals do not react with either hot or cold water.Silver, Lead and Copper do not react with water whether the water is in the form of liquid or gas.

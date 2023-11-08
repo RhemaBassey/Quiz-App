@@ -147,7 +147,7 @@ export var questions = [
   {
     question: "A kilowatt-hour is a unit of:",
     options: ["Time", "Power", "Energy", "Voltage"],
-    answer: "Power",
+    answer: "Energy",
   },
   {
     question: "Which of the following has three significant figures?",
@@ -176,88 +176,108 @@ export var questions = [
     answer: "None of these",
   },
   {
-    "question": "Distance traveled in a period of time",
-    "options": ["Motion", "Acceleration", "Speed", "None of these"],
-    "answer": "None of these"
+    question: "Distance traveled in a period of time",
+    options: ["Motion", "Acceleration", "Speed", "None of these"],
+    answer: "None of these",
   },
   {
-    "question": "Which of these is the independent variable in a distance-time graph",
-    "options": ["Time", "Distance", "Speed", "None of these"],
-    "answer": "Time"
+    question:
+      "Which of these is the independent variable in a distance-time graph",
+    options: ["Time", "Distance", "Speed", "None of these"],
+    answer: "Time",
   },
   {
-    "question": "The term normally used to indicate a decrease in speed",
-    "options": ["Acceleration", "Deceleration", "Stop", "None of these"],
-    "answer": "Deceleration"
+    question: "The term normally used to indicate a decrease in speed",
+    options: ["Acceleration", "Deceleration", "Stop", "None of these"],
+    answer: "Deceleration",
   },
   {
-    "question": "Which of the following is an example of a simple machine ?",
-    "options": ["Whistle", "Battery", "Typewriter", "Lever"],
-    "answer": "Lever"
+    question: "Which of the following is an example of a simple machine ?",
+    options: ["Whistle", "Battery", "Typewriter", "Lever"],
+    answer: "Lever",
   },
   {
-    "question": "The number of significant figures in 0.40 is",
-    "options": ["One", "Two", "Three", "Four"],
-    "answer": "Two"
+    question: "The number of significant figures in 0.40 is",
+    options: ["One", "Two", "Three", "Four"],
+    answer: "Two",
   },
   {
-    "question": "Which of the following simple machines would be most closely related to the screw ?",
-    "options": ["Wheel and axle", "Inclined plane", "Pulley", "Lever"],
-    "answer": "Inclined plane"
+    question:
+      "Which of the following simple machines would be most closely related to the screw ?",
+    options: ["Wheel and axle", "Inclined plane", "Pulley", "Lever"],
+    answer: "Inclined plane",
   },
   {
-    "question": "To push a car 30 meters in 20 seconds takes approximately 4,500 joules of work. How much power is needed in joules per second ?",
-    "options": ["0.25", "225.00", "1,500.00", "7,500.00"],
-    "answer": "225.00"
+    question:
+      "To push a car 30 meters in 20 seconds takes approximately 4,500 joules of work. How much power is needed in joules per second ?",
+    options: ["0.25", "225.00", "1,500.00", "7,500.00"],
+    answer: "225.00",
   },
   {
-    "question": "A mercury barometer",
-    "options": ["Is a closed tube manometer", "Is an open tube manometer", "Is usually 760. cm tall", "None of these"],
-    "answer": "Is a closed tube manometer"
+    question: "A mercury barometer",
+    options: [
+      "Is a closed tube manometer",
+      "Is an open tube manometer",
+      "Is usually 760. cm tall",
+      "None of these",
+    ],
+    answer: "Is a closed tube manometer",
   },
   {
-    "question": "Forces that are opposite in direction and equal in size",
-    "options": ["Balanced", "Unbalanced", "Imaginary", "None of these"],
-    "answer": "Balanced"
+    question: "Forces that are opposite in direction and equal in size",
+    options: ["Balanced", "Unbalanced", "Imaginary", "None of these"],
+    answer: "Balanced",
   },
   {
-    "question": "A force acting through a distance is called",
-    "options": ["Work", "Acceleration", "Power", "None of these"],
-    "answer": "Work"
+    question: "A force acting through a distance is called",
+    options: ["Work", "Acceleration", "Power", "None of these"],
+    answer: "Work",
   },
   {
-    "question": "Newtons are the units of",
-    "options": ["Power", "Work", "Weight", "None of these"],
-    "answer": "Weight"
+    question: "Newtons are the units of",
+    options: ["Power", "Work", "Weight", "None of these"],
+    answer: "Weight",
   },
   {
-    "question": "The energy associated with charged particles",
-    "options": ["Electricity", "Light", "Atoms", "None of these"],
-    "answer": "None of these"
+    question: "The energy associated with charged particles",
+    options: ["Electricity", "Light", "Atoms", "None of these"],
+    answer: "Electricity",
   },
   {
-    "question": "This type of electric current flows in only one direction",
-    "options": ["Alternating current", "Static", "Static electricity", "None of these"],
-    "answer": "None of these"
+    question: "This type of electric current flows in only one direction",
+    options: [
+      "Alternating current",
+      "Static",
+      "Static electricity",
+      "None of these",
+    ],
+    answer: "None of these",
   },
   {
-    "question": "This type of current is produced by a battery",
-    "options": ["Alternating current", "Direct current", "Static electricity", "None of these"],
-    "answer": "Direct current"
+    question: "This type of current is produced by a battery",
+    options: [
+      "Alternating current",
+      "Direct current",
+      "Static electricity",
+      "None of these",
+    ],
+    answer: "Direct current",
   },
   {
-    "question": "Materials that easily allow the flow of an electric current",
-    "options": ["Resistors", "Conductors", "Semiconductors", "None of these"],
-    "answer": "Conductors"
+    question: "Materials that easily allow the flow of an electric current",
+    options: ["Resistors", "Conductors", "Semiconductors", "None of these"],
+    answer: "Conductors",
   },
   {
-    "question": "Which of these in not an emergency switch in an electric circuit",
-    "options": ["Fuse", "Circuit breaker", "Transistor", "None of these"],
-    "answer": "Transistor"
+    question:
+      "Which of these in not an emergency switch in an electric circuit",
+    options: ["Fuse", "Circuit breaker", "Transistor", "None of these"],
+    answer: "Transistor",
   },
   {
-    "question": "A change in the pitch of a sound due to the motion of either the sound source or the observer",
-    "options": ["Resonance", "Reverberation", "Refraction", "None of these"],
-    "answer": "None of these"
+    question:
+      "A change in the pitch of a sound due to the motion of either the sound source or the observer",
+    options: ["Resonance", "Reverberation", "Refraction", "None of these"],
+    answer: "None of these",
   },
 ].sort(() => Math.random() - 0.5);

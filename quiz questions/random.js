@@ -1,22 +1,24 @@
-import { questions as mathsQuestions} from "./maths.js";
-import { questions as physicsQuestions} from "./physics.js";
-import { questions as chemistryQuestions} from "./chemistry.js";
-import { questions as biologyQuestions} from "./biology.js";
-import { questions as historyQuestions} from "./history.js";
+var subjects = ['maths','physics','chemistry','biology', 'history'];
+var allQuestions = []
+var n = 0
+for (var subject of subjects){
+  var questionsPath = `./${subject}.js`
 
-var subjectsQuestions = [mathsQuestions, physicsQuestions, chemistryQuestions, biologyQuestions, historyQuestions]
 
-var x = []
+  import(questionsPath).then((module) => {
 
-for(var subjectQuestions of subjectsQuestions){
-  for (var question of subjectQuestions){
-    x.push(question)
-  }
+    var questions = module.questions;
+    
+
+    for (var question of questions) {
+      n+= 1
+      allQuestions.push(question);
+      console.log(n)
+
+    }
+  })
 
 }
+// put this within import
+export var questions = allQuestions.sort(() => Math.random() - 0.5);
 
-function shuffleArray(array) { 
-  return array.sort(() => Math.random() - 0.5);
-}
-
-export var questions = shuffleArray(x)

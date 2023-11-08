@@ -20,58 +20,58 @@ export var questions = [
   {
     question: "What is the sum of 130+125+191?",
     options: ["335", "456", "446", "426"],
-    answer: 446
+    answer: 446,
   },
   {
     question: "If we minus 712 from 1500, how much do we get?",
     options: ["788", "778", "768", "758"],
-    answer: 788
+    answer: 788,
   },
   {
     question: "50 times of 8 is equal to:",
     options: ["80", "400", "800", "4000"],
-    answer: 400
+    answer: 400,
   },
   {
     question: "110 divided by 10 is:",
     options: ["11", "10", "5", "None of these"],
-    answer: 11
+    answer: 11,
   },
   {
     question: "20+(90÷2) is equal to:",
     options: ["50", "55", "65", "60"],
-    answer: 65
+    answer: 65,
   },
   {
     question: "The product of 82 and 5 is:",
     options: ["400", "410", "420", "None of these"],
-    answer: 410
+    answer: 410,
   },
   {
     question: "Find the missing terms in multiple of 3: 3, 6, 9, __, 15",
     options: ["10", "11", "12", "13"],
-    answer: 12
+    answer: 12,
   },
   {
     question: "Solve 24÷8+2.",
     options: ["5", "6", "8", "12"],
-    answer: 5
+    answer: 5,
   },
   {
     question: "Solve: 300 – (150×2)",
     options: ["150", "100", "50", "0"],
-    answer: 0
+    answer: 0,
   },
   {
     question: "The product of 121 x 0 x 200 x 25 is",
     options: ["1500", "0", "4000", "None of these"],
-    answer: 0
+    answer: 0,
   },
   {
     question: "What is the next prime number after 5?",
     options: ["6", "7", "9", "11"],
-    answer: 7
-  }
+    answer: 7,
+  },
 ].sort(() => Math.random() - 0.5);
 
 // localStorage.setItem("MathsQuestions", JSON.stringify(questions))
