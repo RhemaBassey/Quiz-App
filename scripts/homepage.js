@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
+  // creates a card for each subject
   for (subject of subjects) {
     var subjectCard = document.createElement("div");
     var subjectCardTitle = document.createElement("h2");
@@ -42,16 +43,16 @@ document.addEventListener("DOMContentLoaded", function () {
     subjectCardTitle.innerText = subject.title;
     subjectCardText.innerText = subject.text;
     subjectCard.className = "card";
+
     subjectCard.appendChild(subjectCardTitle);
     subjectCard.appendChild(subjectCardImage);
     subjectCard.appendChild(subjectCardText);
-
     subjectsContainer.appendChild(subjectCard);
 
   
   subjectCard.addEventListener('click', function() {
     // Define the URL you want to navigate to
-    var destinationURL = 'quiz room.html'; // Replace with your desired URL
+    var destinationURL = 'quiz-room.html';
 
     // Redirect to the specified URL
     window.location.href = destinationURL;

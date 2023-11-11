@@ -298,4 +298,4 @@ export var questions = [
     options: ["3.8", "5.5", "6.6", "2.5"],
     answer: "2.5",
   },
-].sort(() => Math.random() - 0.5);
+];

@@ -72,6 +72,6 @@ export var questions = [
     options: ["6", "7", "9", "11"],
     answer: 7,
   },
-].sort(() => Math.random() - 0.5);
+];
 
 // localStorage.setItem("MathsQuestions", JSON.stringify(questions))

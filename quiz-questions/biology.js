@@ -241,4 +241,4 @@ export var questions = [
     options: ["replication", "translation", "transduction"],
     answer: "translation",
   },
-].sort(() => Math.random() - 0.5);
+];

@@ -171,4 +171,4 @@ export var questions = [
     options: ["Athena", "Artemis", "Aphrodite", "Hera", "Demeter"],
     answer: "Athena",
   },
-].sort(() => Math.random() - 0.5);
+];

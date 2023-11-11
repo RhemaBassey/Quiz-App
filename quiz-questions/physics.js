@@ -280,4 +280,4 @@ export var questions = [
     options: ["Resonance", "Reverberation", "Refraction", "None of these"],
     answer: "None of these",
   },
-].sort(() => Math.random() - 0.5);
+];
