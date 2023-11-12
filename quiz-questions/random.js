@@ -1,22 +1,28 @@
-var subjects = ["maths", "physics", "chemistry", "biology", "history"];
+import { settings } from "../settings.js";
+var subjects = settings.displayedSubjects
+
 var questions = [];
 var leastQuestionsCount = Infinity;
 var uncutQuestions = [];
 
 async function loadQuestions() {
+
   for (var subject of subjects) {
-    var questionsPath = `./${subject}.js`;
+    if(subject.toLowerCase() != 'random'){
+      var questionsPath = `./${subject}.js`;
 
-    let module = await import(questionsPath);
-    var moduleQuestions = module.questions;
-    var questionsCount = moduleQuestions.length;
-
-    // gets the subject with the least amount of questions
-    if (questionsCount < leastQuestionsCount) {
-      leastQuestionsCount = questionsCount;
+      let module = await import(questionsPath);
+      var moduleQuestions = module.questions;
+      var questionsCount = moduleQuestions.length;
+  
+      // gets the subject with the least amount of questions
+      if (questionsCount < leastQuestionsCount) {
+        leastQuestionsCount = questionsCount;
+      }
+  
+      uncutQuestions.push(moduleQuestions);
     }
 
-    uncutQuestions.push(moduleQuestions);
   }
 
   for (var uncutSubjectQuestions of uncutQuestions) {

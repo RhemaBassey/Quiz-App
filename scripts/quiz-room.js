@@ -1,3 +1,4 @@
+import { settings } from "../settings.js";
 var exportData = [];
 var subject = JSON.parse(localStorage.getItem("subject"));
 var questionsPath = `../quiz-questions/${subject}.js`;
@@ -7,9 +8,9 @@ var body = document.getElementsByTagName("body")[0];
 
 import(questionsPath).then((module) => {
   function myFunction(questions) {
-    var maxAllowedQuestions = 10; //number of questions to be asked on any given quiz
-    var randomizeQuestionOrder = true;
-    var randomizeQuestionOptions = true;
+    var maxAllowedQuestions = settings.maxAllowedQuestions; //number of questions to be asked on any given quiz
+    var randomizeQuestionOrder = settings.randomizeQuestionOrder;
+    var randomizeQuestionOptions = settings.randomizeQuestionOptions;
 
     if (randomizeQuestionOptions == true) {
       for (var i in questions) {
@@ -168,7 +169,11 @@ import(questionsPath).then((module) => {
 
     function scrollToTop() {
       // window.scrollTo(0, 0); // start from the top of the page, after the fade effect... not really needed I guess.
-      mainContent.scrollTo(0, 0); // start from the top of the scrollable content in the card, after the fade effect
+      mainContent.scrollTo({
+        top: 0,
+        left: 0,
+        behaviour: "smooth",
+      }); // start from the top of the scrollable content in the card, after the fade effect
     }
 
     function previousPage() {
@@ -177,7 +182,7 @@ import(questionsPath).then((module) => {
         // removes green-highlights of 'next' button in the event going to previous page after a full questions completion.
         nextBtn.classList.remove("submit-green-btn");
         //removes submit button styling, such as left-align
-        nextBtn.classList.remove("submit-btn")
+        nextBtn.classList.remove("submit-btn");
         // disables 'previous' button at page 1
         if (questionCount == 1) {
           previousBtn.classList.add("disabled");
@@ -208,23 +213,30 @@ import(questionsPath).then((module) => {
           num.start = questionCount;
           displayedQuestion.innerText = questions[questionCount - 1].question;
           addOptions(questions);
+          scrollToTop();
         }
-        scrollToTop();
+
       }, delay);
     }
 
     function dialogBox(unansweredQuestions) {
       // Code to create a custom dialog box with it's functionality upon submission
       var customDialog = document.createElement("span");
+      var heading = document.createElement("h2");
       var customDialogMessage = document.createElement("p");
       customDialogMessage.id = "customDialogMessage";
       var buttonContainer = document.createElement("div");
       var yesButton = document.createElement("button");
       var noButton = document.createElement("button");
 
+      window.scrollTo({
+        top: 100, // Adjust this value to the desired vertical position
+        left: 0,
+        behavior: "smooth",
+      });
       customDialog.id = "customDialog";
       customDialog.className = "custom-dialog";
-
+      heading.innerText = "Submit?";
       buttonContainer.className = "button-container";
       yesButton.className = "btn-basic yes-btn";
       yesButton.innerText = "YES";
@@ -235,6 +247,7 @@ import(questionsPath).then((module) => {
 
       buttonContainer.appendChild(yesButton);
       buttonContainer.appendChild(noButton);
+      customDialog.appendChild(heading);
       customDialog.appendChild(customDialogMessage);
       customDialog.appendChild(buttonContainer);
       body.appendChild(customDialog);
@@ -244,8 +257,9 @@ import(questionsPath).then((module) => {
       );
 
       if (unansweredQuestions == 0) {
-        displayedCustomDialogMessage.innerText = "Are you sure you want to submit?";
-        displayedCustomDialogMessage.style.color = "#008bbac0"
+        displayedCustomDialogMessage.innerText =
+          "Are you sure you want to submit?";
+        displayedCustomDialogMessage.style.color = "#005e7e";
       } else if (unansweredQuestions == 1) {
         displayedCustomDialogMessage.innerText =
           "You have 1 unanswered question!\nSubmit?";
@@ -295,8 +309,8 @@ import(questionsPath).then((module) => {
       // The condition below triggeres on the second to the last page and makes the next page generated, have a designed submit button
       if (questionCount >= questionCountMax - 1) {
         nextBtn.innerHTML = "SUBMIT";
-        nextBtn.classList.add("submit-btn")
-        
+        nextBtn.classList.add("submit-btn");
+
         // turn submit button green
         if (selectedOptions.includes("") == false) {
           nextBtn.classList.add("submit-green-btn");
@@ -334,15 +348,14 @@ import(questionsPath).then((module) => {
     }
   }
 
-    // when dealing with random, you can't export directly as you are sending
-    // a 'Promise' from 'random.js' which can't be imported directly
-    if (subject.toLowerCase() == "random") {
-      module.questions.then((questions) => {
-        document.addEventListener("DOMContentLoaded", myFunction(questions));
-      });
-    } else {
-      var questions = module.questions;
+  // when dealing with random, you can't export directly as you are sending
+  // a 'Promise' from 'random.js' which can't be imported directly
+  if (subject.toLowerCase() == "random") {
+    module.questions.then((questions) => {
       document.addEventListener("DOMContentLoaded", myFunction(questions));
-    }
-  
+    });
+  } else {
+    var questions = module.questions;
+    document.addEventListener("DOMContentLoaded", myFunction(questions));
+  }
 });
