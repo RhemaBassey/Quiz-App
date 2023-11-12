@@ -1,47 +1,47 @@
-/* Reset some default styles */
+/* all */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+/* tags */
 a {
   text-decoration: none;
-  color:darkblue;
+  color: darkblue;
 }
 
-a:hover{
+a:hover {
   color: limegreen;
 }
 
-a:active{
+a:active {
   color: red;
 }
 
 body {
-  /* first 5 properties are to prevent scollbar from appearing */
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%; */
   height: 100%;
-
-  /* or say overflow:hidden */
-  /* overflow:hidden; */
-
   font-family: "Inter", sans-serif;
   font-family: "Raleway", sans-serif;
   text-align: center;
   margin-top: 20px;
   background-color: #005e7e;
-  /* background-color: #f0f0f0; */
   justify-content: center;
   align-items: center;
-
 }
 
 h1.heading {
   color: #ffffff;
+}
+
+li {
+  margin-bottom: 0px;
+  margin-left: 40px;
+  padding-left: 20px;
+}
+
+p {
+  color: #666;
+  font-size: 16px;
 }
 
 p.heading {
@@ -65,53 +65,29 @@ strong {
   padding-right: 20px;
 }
 
-.three-d-btn {
-  opacity: 1;
-  color: white;
-  background-color: #008cba;
-  border: none;
-  padding: 20px;
-  margin: 30px 20px 0px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 18px;
-  width: 120px;
-  cursor: pointer;
+ul {
+  list-style: upper-alpha-alt;
+  padding: 0;
 }
 
-.shadow3 {
-  background-color: #00779e;
-  border-radius: 10px;
-}
-/* .shadow3:hover {
-  box-shadow: 0 12px 16px 0 rgb(174, 0, 255),
-    0 17px 50px 0 rgba(1, 48, 255, 0.5);
-} */
-
-.shadow3:active {
-  background-color: #005e7e;
-  /* box-shadow: 0 12px 16px 0 rgba(255, 70, 255, 0.8),
-    0 17px 50px 0 rgba(255, 52, 1, 0.5); */
-}
+/* classes */
 
 .animated1 {
   box-shadow: 0 9px #005e7e;
-  /* padding: 20px 60px; */
   border-radius: 15px;
 }
-
-.animated1:hover {
-  background-color: #00779e;
-}
-
 .animated1:active {
   background-color: #00779e;
   box-shadow: 0 5px #003f53;
   transform: translateY(4px);
 }
 
-.btn-basic{
+.animated1:hover {
+  cursor: pointer;
+  background-color: #00779e;
+}
+
+.btn-basic {
   opacity: 1;
   color: white;
   background-color: #008cba;
@@ -127,6 +103,15 @@ strong {
   width: 40%;
 }
 
+.button-container {
+  text-align: center;
+  padding-bottom: 20px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .card {
   margin: 0 auto 30px; /* makes the card centered, with 30px margin bottom*/
   padding: 20px 20px 50px; /* 20px Top, 20px Left & Right , 50px Bottom */
@@ -138,62 +123,11 @@ strong {
 
   text-align: center;
   justify-content: center;
+  width: 90%;
   max-width: 750px;
   height: 520px; /* Set a fixed height for the card */
 
   overflow: hidden; /* Hide content that overflows the card */
-}
-
-.custom-dialog {
-  display: none;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  padding: 10px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
-  z-index: 10000;
-}
-.custom-dialog p{
-  padding-top: 20px;
-}
-.yes-btn{
-  background-color: limegreen;
-}
-.yes-btn:hover{
-  background-color: lime;
-}
-.no-btn{
-  background-color:#ec3131e5
-}
-.no-btn:hover{
-  background-color:#ff1616
-}
-.button-container {
-  text-align: center;
-  padding-bottom: 20px;
-}
-
-
-.scrollable-content {
-  height: 85%;
-  overflow-y: auto; /* Enable vertical scrolling */
-}
-
-.scrollable-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.scrollable-content::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 8px;
-}
-
-.scrollable-content::-webkit-scrollbar-track {
-  background-color: ghostwhite;
-  border-radius: 8px;
 }
 
 .card-text {
@@ -201,14 +135,35 @@ strong {
   text-align: center;
 }
 
-.disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.custom-dialog {
+  display: none;
+  background-color: ghostwhite;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 400px;
+  z-index: 10000;
 }
 
-#quiz-room .fade-in {
-  opacity: 0;
-  transition: opacity 0.4s;
+.custom-dialog p {
+  padding-top: 20px;
+  color: red;
+}
+
+.homepage-body {
+  background-color: indigo;
+}
+
+.no-btn {
+  background-color: #ec3131e5;
+}
+.no-btn:hover {
+  background-color: #ff1616;
 }
 
 .options-btn {
@@ -242,6 +197,25 @@ strong {
   color: white;
 }
 
+.scrollable-content {
+  height: 85%;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.scrollable-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 8px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+  background-color: ghostwhite;
+  border-radius: 8px;
+}
+
 .score-container {
   margin: 20px auto 10px auto;
 }
@@ -251,49 +225,60 @@ strong {
   color: white;
 }
 
+.shadow3 {
+  background-color: #00779e;
+  border-radius: 10px;
+}
+
+.shadow3:active {
+  background-color: #005e7e;
+}
+
 .stars {
   size: 5px;
   /* padding: 20px;
   margin: 20px; */
 }
 
-.submit-green-btn {
-  background-color: limegreen;
+.subjectcardimage {
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-top: 5px;
+  height: 70%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.submit-btn {
+  text-align: left;
+  overflow: hidden; /* Hide the overflowing text */
+  text-overflow: ellipsis; /* Add an ellipsis (...) to indicate truncated text */
+  padding-left: 20px;
+}
+
+.three-d-btn {
+  opacity: 1;
   color: white;
-  box-shadow: 0 9px #3f704d;
-  /* padding: 20px 60px; */
-  border-radius: 15px;
+  background-color: #008cba;
+  border: none;
+  padding: 20px;
+  margin: 30px 20px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  width: 120px;
+}
+.yes-btn {
+  background-color: rgba(37, 221, 37, 0.75);
+}
+.yes-btn:hover {
+  background-color: #33ff33;
 }
 
-.submit-green-btn:hover {
-  background-color: lime;
-  box-shadow: 0 9px limegreen;
-}
+/* Ids */
 
-.submit-green-btn:active {
-  background-color: lime;
-  box-shadow: 0 5px limegreen;
-  transform: translateY(4px);
-}
-
-#homepage h2 {
-  padding-bottom: 10px;
-}
-
-
-#homepage p {
-  /* color: #333; */
-  color: rgb(0, 0, 95);
-  margin: 10px auto;
-  font-size: 0.85rem;
-}
-
-.homepage-body {
-  background-color: indigo;
-}
-
-
-#homepage  .card {
+#homepage .card {
   height: 350px;
   width: 350px;
   display: inline-block;
@@ -301,55 +286,50 @@ strong {
   background-color: hsl(278, 100%, 75%);
   cursor: pointer;
 
-
   border: 10px solid transparent;
 
   color: rgb(0, 0, 95);
- 
-  /* Add this line */
+
   box-sizing: border-box;
-  
 
   transition: color 0.5s 0.0833333333s;
-  
+
   position: relative;
-  
+
   overflow-y: auto;
 
   overflow: hidden;
 }
 
-
 #homepage .card::before,
 #homepage .card::after {
-    border: 0 solid transparent;
-    box-sizing: border-box;
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    width: 0;
-    height: 0;
-    bottom: 0;
-    right: 0;
+  border: 0 solid transparent;
+  box-sizing: border-box;
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 0;
+  right: 0;
 }
 
 #homepage .card::before {
-    border-bottom-width: 3px;
-    border-left-width:   3px;
+  border-bottom-width: 3px;
+  border-left-width: 3px;
 }
 
 #homepage .card::after {
-    border-top-width:    3px;
-    border-right-width:   3px;
+  border-top-width: 3px;
+  border-right-width: 3px;
 }
 
 #homepage .card:hover {
   background-color: hsl(286, 100%, 80%);
   /* transition: border 0.5s ease; */
   border: 0px solid transparent;
-
 }
-#homepage .card:hover p{
+#homepage .card:hover p {
   color: indigo;
   margin-bottom: -10px;
   font-size: 0.95rem;
@@ -357,8 +337,8 @@ strong {
 
 #homepage .card:hover::before,
 #homepage .card:hover::after {
-    width:100%; 
-    height:100%;
+  width: 100%;
+  height: 100%;
 }
 
 #homepage .card:hover h2 {
@@ -367,10 +347,21 @@ strong {
   font-size: 1.8rem;
 }
 
+#homepage h2 {
+  padding-bottom: 10px;
+}
+
 #homepage .heading p,
 #homepage .heading h1,
-#homepage .heading h2{
-  color: white
+#homepage .heading h2 {
+  color: white;
+}
+
+#homepage p {
+  /* color: #333; */
+  color: rgb(0, 0, 95);
+  margin: 10px auto;
+  font-size: 0.85rem;
 }
 
 #overlay {
@@ -385,34 +376,44 @@ strong {
   display: none;
 }
 
-
-#subjectsContainer {
-  width: 80%;
-  margin: 0 auto;
+#quiz-room .card {
+  height: 620px; /* Set a fixed height for the card */
 }
 
-.subjectcardimage {
-  margin-left: -10px;
-  margin-right: -10px;
-  margin-top: 5px;
-  height: 70%;
-  width: 100%;
-  border-radius: 10px;
+#quiz-room .disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-#submission-room #displayedQuestionCountMax {
-  vertical-align: -4px;
+#quiz-room .fade-in {
+  opacity: 0;
+  transition: opacity 0.4s;
 }
 
-#submission-room #displayedScore {
-  vertical-align: 8px;
+#quiz-room .scrollable-content {
+  height: 90%;
+  max-height: 440px;
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
-/* #previousBtn {
-  position: fixed;
-  bottom: 10px;
+#quiz-room .submit-green-btn {
+  background-color: limegreen;
+  color: white;
+  box-shadow: 0 9px #3f704d;
+  /* padding: 20px 60px; */
+  border-radius: 15px;
+}
 
-} */
+#quiz-room .submit-green-btn:hover {
+  background-color: lime;
+  box-shadow: 0 9px limegreen;
+}
+
+#quiz-room .submit-green-btn:active {
+  background-color: lime;
+  box-shadow: 0 5px limegreen;
+  transform: translateY(4px);
+}
 
 #quiz-room h3 {
   color: #333;
@@ -423,13 +424,19 @@ strong {
   text-align: left;
 }
 
-#quiz-room .hide {
-  display: none;
+#quiz-room .three-d-btn {
+  width: 80%;
+  max-width: 110px;
+  margin-top: 12px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 #review-room .correct-option {
-  background-color: #2bf72b;
-  border: 2px solid #2bf72b;
+  background-color: #33ff33;
+  border: 2px solid #33ff33;
   color: white;
 }
 
@@ -439,8 +446,21 @@ strong {
   color: white;
 }
 
+#subjectsContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
 #submission-room .card {
   width: 300px;
+}
+
+#submission-room #displayedQuestionCountMax {
+  vertical-align: -4px;
+}
+
+#submission-room #displayedScore {
+  vertical-align: 8px;
 }
 
 #submission-room h3 {
@@ -450,26 +470,11 @@ strong {
   padding-bottom: 20px;
 }
 
-/* stylize the listing of quiz options (e.g 'A: Option A', instead of, 'A. Option A' */
+/* others */
+/* stylize the listing of quiz options (e.g 'A: Option A', instead of, 'A. Option A') */
 @counter-style upper-alpha-alt {
   /* system uses upper-alpha as list-style */
   system: extends upper-alpha;
   prefix: "";
   suffix: " : ";
-}
-
-ul {
-  list-style: upper-alpha-alt;
-  padding: 0;
-}
-
-li {
-  margin-bottom: 0px;
-  margin-left: 40px;
-  padding-left: 20px;
-}
-
-p {
-  color: #666;
-  font-size: 16px;
 }

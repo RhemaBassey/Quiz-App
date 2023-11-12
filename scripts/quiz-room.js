@@ -7,7 +7,7 @@ var body = document.getElementsByTagName("body")[0];
 
 import(questionsPath).then((module) => {
   function myFunction(questions) {
-    var maxAllowedQuestions = 5; //number of questions to be asked on any given quiz
+    var maxAllowedQuestions = 10; //number of questions to be asked on any given quiz
     var randomizeQuestionOrder = true;
     var randomizeQuestionOptions = true;
 
@@ -59,7 +59,7 @@ import(questionsPath).then((module) => {
       previousPage();
     });
     nextBtn.addEventListener("click", function () {
-      submitBtn(questionCountMax , true);
+      submitBtn(true);
 
       nextPage();
     });
@@ -132,7 +132,7 @@ import(questionsPath).then((module) => {
             optionBtnClicked = true;
             // delay set for submit btn so it doesn't appear before fadeDelay transition is over
             setTimeout(function () {
-              submitBtn(questionCountMax, false);
+              submitBtn(false);
             }, submitDelay);
             nextPage(fadeDelay);
           }
@@ -176,6 +176,8 @@ import(questionsPath).then((module) => {
         questionCount--;
         // removes green-highlights of 'next' button in the event going to previous page after a full questions completion.
         nextBtn.classList.remove("submit-green-btn");
+        //removes submit button styling, such as left-align
+        nextBtn.classList.remove("submit-btn")
         // disables 'previous' button at page 1
         if (questionCount == 1) {
           previousBtn.classList.add("disabled");
@@ -242,12 +244,11 @@ import(questionsPath).then((module) => {
       );
 
       if (unansweredQuestions == 0) {
-        displayedCustomDialogMessage.innerText =
-          "Are you sure you want to submit?";
+        displayedCustomDialogMessage.innerText = "Are you sure you want to submit?";
+        displayedCustomDialogMessage.style.color = "#008bbac0"
       } else if (unansweredQuestions == 1) {
         displayedCustomDialogMessage.innerText =
           "You have 1 unanswered question!\nSubmit?";
-
       } else if (unansweredQuestions > 1) {
         displayedCustomDialogMessage.innerText = `You have ${unansweredQuestions} unanswered questions!\nSubmit?`;
       }
@@ -289,18 +290,19 @@ import(questionsPath).then((module) => {
       showCustomDialog();
     }
 
-    // submit btn countMax tells submit Button embedded in other functions, when to get triggered,
-    // When on the last page submit btn isSubmitBtn prevents optionBtn (which has submitBtn embedded) from triggering,
-    //only nextBtn which is embedded with it can trigger submission and display the submit prompt on the last page.
-    function submitBtn(countMax, isSubmitBtn) {      mainContents[questionCount - 1] = mainContent.innerHTML;
+    function submitBtn(isSubmitBtn) {
+      mainContents[questionCount - 1] = mainContent.innerHTML;
       // The condition below triggeres on the second to the last page and makes the next page generated, have a designed submit button
-      if (questionCount >= countMax - 1) {
+      if (questionCount >= questionCountMax - 1) {
         nextBtn.innerHTML = "SUBMIT";
+        nextBtn.classList.add("submit-btn")
+        
         // turn submit button green
         if (selectedOptions.includes("") == false) {
           nextBtn.classList.add("submit-green-btn");
         }
-
+        // When on the last page submit btn isSubmitBtn prevents optionBtn (which has submitBtn embedded) from triggering,
+        //only nextBtn which is embedded with it can trigger submission and display the submit prompt on the last page.
         if (questionCount == questionCountMax && isSubmitBtn == true) {
           var correctAnswers = 0;
           var unanswered = 0;
@@ -332,7 +334,6 @@ import(questionsPath).then((module) => {
     }
   }
 
-  if (body.id == "quiz-room") {
     // when dealing with random, you can't export directly as you are sending
     // a 'Promise' from 'random.js' which can't be imported directly
     if (subject.toLowerCase() == "random") {
@@ -343,5 +344,5 @@ import(questionsPath).then((module) => {
       var questions = module.questions;
       document.addEventListener("DOMContentLoaded", myFunction(questions));
     }
-  }
+  
 });

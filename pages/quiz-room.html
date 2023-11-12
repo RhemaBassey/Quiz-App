@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter&family=Raleway&display=swap"
       rel="stylesheet"
     />
+
     <!-- font awesome CDN -->
     <link
       rel="stylesheet"
@@ -18,38 +19,50 @@
     />
 
     <link rel="stylesheet" href="../styles.css" />
+
     <title>Quiz: Subject Quiz</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   </head>
-
   <body id="quiz-room">
-    <div id="overlay"></div>
-    <h1 class="heading">Subject Quiz</h1>
-    <p class="heading">Please select the correct answer</p>
-    <br />
-    <div class="card">
-      <div class="scrollable-content" id="mainContent">
-        <h3>
-          Question <span id="displayedQuestionCount">1</span> of
-          <span id="displayedQuestionCountMax"></span>
-        </h3>
-        <ol id="num" start="">
-          <li>
-            <p id="displayedQuestion" class="que2"></p>
-          </li>
-        </ol>
-
-        <ul id="displayedOptions"></ul>
+    <div id="overlay">
       </div>
-      <button id="previousBtn" class="three-d-btn animated1">
-        <i class="fa-solid fa-arrow-left"></i>
-      </button>
-      <a id="submitBtnLink">
-        <button id="nextBtn" class="three-d-btn animated1">
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
-      </a>
-    </div>
+      <h1 class="heading">Subject Quiz</h1>
+      <p class="heading">Please select the correct answer</p>
+      <br />
+  
+      <div class="card">
+        <div class="scrollable-content" id="mainContent">
+          <h3>
+            Question <span id="displayedQuestionCount">1</span> of
+            <span id="displayedQuestionCountMax"></span>
+          </h3>
+          <ol id="num" start="">
+            <li>
+              <p id="displayedQuestion" class="que2">
 
+              </p>
+            </li>
+          </ol>
+  
+          <ul id="displayedOptions">
+
+        </div>
+
+        <div class="button-container">
+          <button id="previousBtn" class="three-d-btn animated1">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+  
+            <button id="nextBtn" class="three-d-btn animated1">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+  
+
+      </div>
+
+    
     <script src="../scripts/quiz-room.js" type="module"></script>
   </body>
 </html>
