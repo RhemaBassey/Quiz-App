@@ -34,7 +34,7 @@ export var questions = [
   },
   {
     question:
-      "Newtow’s law of gravitation is an inverse-square law. When separated by a distance d, two unlike charges exert mutual attractive forces of magnitude F on each other. If the separation distance between these charges are doubled, how strong are the mutual forces now?",
+      "Newton’s law of gravitation is an inverse-square law. When separated by a distance d, two unlike charges exert mutual attractive forces of magnitude F on each other. If the separation distance between these charges are doubled, how strong are the mutual forces now?",
     options: ["F/4", "F/2", "2F", "4F"],
     answer: "F/4",
   },

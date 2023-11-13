@@ -6,7 +6,7 @@ and use the 'displayedSubjects' array to  include/exclude the subjects to be qui
 
 Q & As for each subject are shown it the 'quiz-questions' folder.
 
-To add a new subject:
+To add a new subject:   
     - go to settings.js
     - include the subject in the 'subjects' array following the custom format
     - include the subject title to the 'displayedSubjects' array 
