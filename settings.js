@@ -4,7 +4,7 @@ export var settings = {
   maxAllowedQuestions: 10,
 
   //randomizes the order of your questions
-  randomizeQuestionOrder: false,
+  randomizeQuestionOrder: true,
 
   //randomizes the order of your options for each question
   randomizeQuestionOptions: true,
